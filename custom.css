@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400;1,700&display=swap');
+
+* {
+    font-family: 'Lato', sans-serif;
+}
+
+@media print {
+	@page {
+		margin-top: 0;
+		margin-bottom: 0;
+	}
+	body {
+		padding-top: 72px;
+		padding-bottom: 72px ;
+	}
+}
