@@ -95,7 +95,7 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
                             <tbody>
                                 <?php
                                 foreach ($data as $d) {
-                                    echo "<tr class='border-b border-opacity-20 dark:border-gray-700 dark:bg-gray-900'>
+                                    echo "<tr class=' border-opacity-20 dark:border-gray-700 dark:bg-gray-900'>
                                     <td class='p-3'>
                                         <p>$d[material_code]</p>
                                     </td>

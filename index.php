@@ -67,7 +67,7 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
                     </li>
                     <li>
                         <a rel="noopener noreferrer" href="barang-keluar.php" class="flex items-center p-2 space-x-3 rounded-md">
-                            <img src="./file-text.svg" class="w-5 h-5 fill-current dark:text-gray-400">
+                            <img src="./file-text.svg" class="w-5 h-5 text-black fill-current dark:text-gray-100">
                             <span>Barang Keluar</span>
                         </a>
                     </li>

@@ -10,7 +10,7 @@
     <title>Cetak</title>
 </head>
 
-<body class="text-xs font-bold">
+<body class="text-sm font-bold">
     <script>
         var input = JSON.parse(localStorage.getItem('input'));
 
@@ -36,25 +36,25 @@
         }
     </script>
 
-    <main class="max-w-[800px] mx-auto min-h-screen w-full">
+    <main class="max-w-[800px] mx-auto min-h-screen w-full p-5 border">
         <div class="flex items-start justify-between">
-            <div>
-                <h1>PT PLN (Persero)</h1>
-                <h1>UIW RIAU DAN KEPRI</h1>
-                <h1>UP3 PEKANBARU</h1>
+            <div class="font-bold">
+                <h1 class="font-bold">PT PLN (PERSERO)</h1>
+                <h1 class="font-bold">UIW RIAU DAN KEPRI</h1>
+                <h1 class="font-bold">UP3 PEKANBARU</h1>
             </div>
             <div>
                 <h1>
                     <script>
-                        document.write(formatDate(input.created_at));
+                        document.write('Pekanbaru, ' + formatDate(input.created_at));
                     </script>
                 </h1>
             </div>
         </div>
 
         <div>
-            <h1 class="text-sm text-center">SURAT KETERANGAN KELUAR</h1>
-            <h1 class="text-sm text-center">NO : <script>
+            <h1 class="text-lg text-center">SURAT KETERANGAN KELUAR</h1>
+            <h1 class="text-lg text-center">NO : <script>
                     document.write(input.letter_number);
                 </script>
             </h1>
@@ -62,7 +62,7 @@
 
         <div class="space-y-2 mt-14">
             <div class="flex gap-2">
-                <div class="w-36">KEPADA</div>
+                <div class="w-40">KEPADA</div>
                 <div>:
                     <script>
                         document.write(input.letter_to);
@@ -71,7 +71,7 @@
             </div>
 
             <div class="flex gap-2">
-                <div class="w-36">UNTUK</div>
+                <div class="w-40">UNTUK</div>
                 <div>:
                     <script>
                         document.write(input.letter_for);
@@ -80,7 +80,7 @@
             </div>
 
             <div class="flex gap-2">
-                <div class="w-36">BERDASARKAN</div>
+                <div class="w-40">BERDASARKAN</div>
                 <div>:
                     <script>
                         document.write(input.based_on);
@@ -89,7 +89,7 @@
             </div>
 
             <div class="flex gap-2">
-                <div class="w-36">KONRAK/SKPP/FAKTUR</div>
+                <div class="w-40">KONRAK/SKPP/FAKTUR</div>
                 <div>:
                     <script>
                         document.write(input.contract_spk_factur);
@@ -98,7 +98,7 @@
             </div>
 
             <div class="flex gap-2">
-                <div class="w-36">TUG-8 & TUG-9</div>
+                <div class="w-40">TUG-8 & TUG-9</div>
                 <div>:
                     <script>
                         document.write(input.tug8_tug9);
@@ -107,7 +107,7 @@
             </div>
 
             <div class="flex gap-2">
-                <div class="w-36">DIBAWA DENGAN</div>
+                <div class="w-40">DIBAWA DENGAN</div>
                 <div>:
                     <script>
                         document.write(input.delivery_with);
@@ -123,13 +123,13 @@
 
         <table class="p-2 mt-5 space-y-2 text-sm border">
             <tr>
-                <th class="p-3 w-36">NO</th>
-                <th class="p-3 w-36">NAMA MATERIAL</th>
-                <th class="p-3 w-36">NOMOR</th>
-                <th class="p-3 w-36">TIPE</th>
-                <th class="p-3 w-36">STN</th>
-                <th class="p-3 w-36">JUMLAH</th>
-                <th class="p-3 w-36">KETERANGAN</th>
+                <th class="w-40 p-3">NO</th>
+                <th class="w-40 p-3">NAMA MATERIAL</th>
+                <th class="w-40 p-3">NOMOR</th>
+                <th class="w-40 p-3">TIPE</th>
+                <th class="w-40 p-3">STN</th>
+                <th class="w-40 p-3">JUMLAH</th>
+                <th class="w-40 p-3">KETERANGAN</th>
             </tr>
 
             <script>
@@ -138,7 +138,7 @@
                 materials.forEach(material => {
                     let details = JSON.parse(material.details)
                     document.write(`
-                <tr>
+                <tr class="border">
                     <td class='p-2 font-normal text-center'>${no}</td>
                     <td  class='p-2 font-normal text-center'>${details.material_name ?? ''}</td>
                     <td  class='p-2 font-normal text-center'>${details.material_code ?? ''}</td>
@@ -153,10 +153,8 @@
             </script>
         </table>
 
-
         <p class="mt-3 font-bold">
-            Material yang sudah keluar dari Gudang PT.PLN (Persero) UP3 Pekabaru menjadi tanggung jawab pihak penerima.
-            barang
+            Material yang sudah keluar dari Gudang PT.PLN (Persero) UP3 Pekabaru menjadi tanggung jawab pihak penerima barang.
         </p>
 
         <div class="flex mt-12 justify-evenly">
