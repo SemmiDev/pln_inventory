@@ -810,6 +810,10 @@ video {
   overflow-x: auto;
 }
 
+.break-all {
+  word-break: break-all;
+}
+
 .rounded-full {
   border-radius: 9999px;
 }

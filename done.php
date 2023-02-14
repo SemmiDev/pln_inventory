@@ -30,9 +30,9 @@ foreach ($barangKeluar as $barang) {
         '$input->created_at',
         '$data->material_description',
         0,
-        $jumlahKeluar,
-        'Keluar',
-        $data->stock_sap
+        '$jumlahKeluar',
+        '$input->keterangan',
+        '$data->stock_sap'
     )";
 
     $result = mysqli_query($db, $sql);
@@ -51,9 +51,9 @@ foreach ($barangKeluar as $barang) {
 
 <body>
     <script>
-        localStorage.removeItem('input');
-        localStorage.removeItem('total');
-        window.location.href = "index.php";
+    localStorage.removeItem('input');
+    localStorage.removeItem('total');
+    window.location.href = "index.php";
     </script>
 </body>
 

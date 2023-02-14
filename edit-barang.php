@@ -10,8 +10,6 @@ if (isset($_POST['submit'])) {
     $material_group = $_POST['material_group'];
     $base_unit_of_measure = $_POST['base_unit_of_measure'];
     $valuation_type = $_POST['valuation_type'];
-    $stock_sap = $_POST['stock_sap'];
-
 
     $sql = "UPDATE material SET
         material_code = '$material_code',
@@ -19,8 +17,7 @@ if (isset($_POST['submit'])) {
         material_description = '$material_description',
         material_group = '$material_group',
         base_unit_of_measure = '$base_unit_of_measure',
-        valuation_type = '$valuation_type',
-        stock_sap = '$stock_sap'
+        valuation_type = '$valuation_type'
         WHERE material_id = '$material_id'
     ";
 
@@ -112,7 +109,7 @@ $data = mysqli_fetch_array($query);
                             <div class="flex flex-wrap items-center px-3 pointer-events-none w-28 sm:text-sm rounded-l-md dark:bg-gray-700">
                                 Kode Material
                             </div>
-                            <input autofocus type="text" value="<?php echo $data['material_code']; ?>" required name="material_code" readonly id="url" placeholder="0001321301231" class="flex flex-1 p-3 border sm:text-sm rounded-r-md focus:ring-inset dark:border-gray-700 dark:text-gray-100 dark:bg-gray-800 focus:ring-violet-400">
+                            <input autofocus type="text" value="<?php echo $data['material_code']; ?>" required name="material_code" id="url" placeholder="0001321301231" class="flex flex-1 p-3 border sm:text-sm rounded-r-md focus:ring-inset dark:border-gray-700 dark:text-gray-100 dark:bg-gray-800 focus:ring-violet-400">
                         </div>
 
                         <div class="flex">
@@ -140,12 +137,6 @@ $data = mysqli_fetch_array($query);
                                 Valuation Type
                             </div>
                             <input type="text" value="<?php echo $data['valuation_type']; ?>" required name="valuation_type" id="url" placeholder="Normal" class="flex flex-1 p-3 border sm:text-sm rounded-r-md focus:ring-inset dark:border-gray-700 dark:text-gray-100 dark:bg-gray-800 focus:ring-violet-400">
-                        </div>
-                        <div class="flex">
-                            <div class="flex flex-wrap items-center px-3 pointer-events-none w-28 sm:text-sm rounded-l-md dark:bg-gray-700">
-                                Stock SAP
-                            </div>
-                            <input type="number" value="<?php echo $data['stock_sap']; ?>" required name="stock_sap" id="url" placeholder="35" class="flex flex-1 p-3 border sm:text-sm rounded-r-md focus:ring-inset dark:border-gray-700 dark:text-gray-100 dark:bg-gray-800 focus:ring-violet-400">
                         </div>
                     </fieldset>
 

@@ -24,6 +24,7 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
 
         let input = JSON.parse(localStorage.getItem('input')) || {
             created_at: '',
+            keterangan: '',
             letter_number: '',
             letter_to: '',
             letter_for: '',
@@ -170,6 +171,15 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
                                 <input type="text" onchange="handleChangeInput(event)" required name="delivery_with" id="delivery_with" placeholder="PT Mega Distribusi" class="flex flex-1 p-3 border sm:text-sm rounded-r-md focus:ring-inset dark:border-gray-700 dark:text-gray-100 dark:bg-gray-800 focus:ring-violet-400">
                             </div>
 
+
+                            <div class="flex">
+                                <div class="flex flex-wrap items-center px-3 pointer-events-none w-36 sm:text-sm rounded-l-md dark:bg-gray-700">
+                                    Keterangan
+                                </div>
+
+                                <textarea placeholder="Keterangan" onchange="handleChangeInput(event)" name="keterangan" id="keterangan" cols="30" rows="3" class="flex flex-1 p-3 border sm:text-sm rounded-r-md focus:ring-inset dark:border-gray-700 dark:text-gray-100 dark:bg-gray-800 focus:ring-violet-400"></textarea>
+                            </div>
+
                         </fieldset>
                     </div>
 
@@ -182,6 +192,7 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
                         document.getElementById('contract_spk_factur').value = input.contract_spk_factur;
                         document.getElementById('tug8_tug9').value = input.tug8_tug9;
                         document.getElementById('delivery_with').value = input.delivery_with;
+                        document.getElementById('keterangan').value = input.keterangan;
                     </script>
                 </div>
 
@@ -192,7 +203,9 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
                                 Material
                             </div>
 
-                            <select name="material" id="material" class="w-44 flex flex-1 p-3 border sm:text-sm rounded-r-md focus:ring-inset dark:border-gray-700 dark:text-gray-100 dark:bg-gray-800 focus:ring-violet-400">
+
+
+                            <select name="material" id="material" class="flex flex-1 p-3 border w-44 sm:text-sm rounded-r-md focus:ring-inset dark:border-gray-700 dark:text-gray-100 dark:bg-gray-800 focus:ring-violet-400">
                                 <script>
                                     var materialSelect = document.getElementById('material');
                                     for (var i = 0; i < materialData.length; i++) {
@@ -208,16 +221,35 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
                                     }
                                 </script>
                             </select>
+
+                            <script>
+                                function syncMaterialOption() {
+                                    var materialSelect = document.getElementById('material');
+                                    materialSelect.innerHTML = '';
+
+                                    for (var i = 0; i < materialData.length; i++) {
+                                        var opt = materialData[i];
+                                        if (opt.stock_sap <= 0) {
+                                            continue;
+                                        }
+
+                                        var el = document.createElement('option');
+                                        el.textContent = opt.material_code + ' 👉 ' + opt.stock_sap + ' Unit  ';
+                                        el.value = JSON.stringify(opt);
+                                        materialSelect.appendChild(el);
+                                    }
+                                }
+                            </script>
                         </div>
 
                         <div class="flex">
                             <div class="flex flex-wrap items-center px-3 pointer-events-none w-36 sm:text-sm rounded-l-md dark:bg-gray-700">
                                 Jumlah Keluar</div>
-                            <input type="number" id="jumlah_keluar" required name="valuation_type" placeholder="10" class="w-60 flex flex-1 p-3 border sm:text-sm rounded-r-md focus:ring-inset dark:border-gray-700 dark:text-gray-100 dark:bg-gray-800 focus:ring-violet-400">
+                            <input type="number" id="jumlah_keluar" required name="valuation_type" placeholder="10" class="flex flex-1 p-3 border w-60 sm:text-sm rounded-r-md focus:ring-inset dark:border-gray-700 dark:text-gray-100 dark:bg-gray-800 focus:ring-violet-400">
                         </div>
 
                         <div class="flex justify-end">
-                            <button onclick="addMaterial()" type="button" id="tambah-material" class="w-44 px-8 py-3 mt-5 font-semibold text-white transition duration-300 bg-black border rounded-lg hover:text-black hover:bg-white hover:border-black">Tambah</button>
+                            <button onclick="addMaterial()" type="button" id="tambah-material" class="px-8 py-3 mt-5 font-semibold text-white transition duration-300 bg-black border rounded-lg w-44 hover:text-black hover:bg-white hover:border-black">Tambah</button>
                         </div>
                     </div>
                 </div>
@@ -238,6 +270,23 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
             input.barang_keluar = input.barang_keluar.filter(function(item) {
                 if (item.barang_keluar_id === id) {
                     tempTotal = item.jumlah_keluar;
+
+                    const barangKeluarId = item.barang_keluar_id.split('👉');
+                    const left = barangKeluarId[0].split('|');
+                    const materialCode = left[1]
+
+                    // add stock
+                    for (var i = 0; i < materialData.length; i++) {
+                        if (materialData[i].material_code.trim() === materialCode.trim()) {
+                            const temp1 = Number(materialData[i].stock_sap);
+                            const temp2 = Number(item.jumlah_keluar);
+                            materialData[i].stock_sap = temp1 + temp2;
+
+                            // sync material option
+                            syncMaterialOption();
+                            break;
+                        }
+                    }
                 }
                 return item.barang_keluar_id !== id;
             });
@@ -314,6 +363,28 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
             // materialName split by '👉' and get the first index
             var materialCode = materialName.split('👉')[0];
             materialCode = materialCode.trim();
+
+            // loop the materialdata for substracting the stock
+            for (var i = 0; i < materialData.length; i++) {
+                if (materialData[i].material_code === materialCode) {
+                    var stock = materialData[i].stock_sap;
+
+                    stock = Number(stock);
+                    jumlahKeluar = Number(jumlahKeluar);
+
+                    // check if stock is enough
+                    if (stock < jumlahKeluar) {
+                        alert('Stock tidak cukup');
+                        return;
+                    }
+
+                    var newStock = stock - jumlahKeluar;
+                    materialData[i].stock_sap = newStock;
+                    syncMaterialOption();
+                    break;
+                }
+            }
+
 
             let materialUnit = materialName.split('👉')[1];
             materialUnit = materialUnit.trim();

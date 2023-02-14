@@ -129,6 +129,7 @@
             <tr>
                 <th class="w-40 p-3">NO</th>
                 <th class="w-40 p-3">NOMOR</th>
+                <th class="w-40 p-3">DESKRIPSI</th>
                 <th class="w-40 p-3">TIPE</th>
                 <th class="w-40 p-3">STN</th>
                 <th class="w-40 p-3">JUMLAH</th>
@@ -138,16 +139,20 @@
             <script>
                 var materials = input.barang_keluar;
                 var no = 1;
+
                 materials.forEach(material => {
                     let details = JSON.parse(material.details)
                     document.write(`
                 <tr class="border">
                     <td class='p-2 font-normal text-center'>${no}</td>
-                    <td  class='p-2 font-normal text-center'>${details.material_code ?? ''}</td>
-                    <td  class='p-2 font-normal text-center'>${details.valuation_type ?? ''}</td>
-                    <td  class='p-2 font-normal text-center'>${details.base_unit_of_measure ?? ''}</td>
-                    <td  class='p-2 font-normal text-center'>${material.jumlah_keluar ?? ''}</td>
-                    <td  class='p-2 font-normal text-center'>${material.keterangan ?? ''}</td>
+                    <td class='p-2 font-normal text-center'>${details.material_code ?? ''}</td>
+                    <td class='p-2 font-normal text-center'>${details.material_description ?? ''}</td>
+                    <td class='p-2 font-normal text-center'>${details.valuation_type ?? ''}</td>
+                    <td class='p-2 font-normal text-center'>${details.base_unit_of_measure ?? ''}</td>
+                    <td class='p-2 font-normal text-center'>${material.jumlah_keluar ?? ''}</td>
+                    <td class='flex flex-wrap p-2 font-normal text-center break-all'>
+                        ${input.keterangan ?? ''}
+                    </td>
                 </tr>
                 `);
                     no++;
