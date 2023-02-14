@@ -6,7 +6,6 @@ $input = $_GET['input'];
 $input = json_decode($input);
 $barangKeluar = $input->barang_keluar;
 
-
 foreach ($barangKeluar as $barang) {
     $materialCode = $barang->material_code;
     $jumlahKeluar = $barang->jumlah_keluar;
@@ -14,29 +13,28 @@ foreach ($barangKeluar as $barang) {
     $sql = "UPDATE material SET stock_sap = stock_sap - $jumlahKeluar WHERE material_code = '$materialCode'";
     $result = mysqli_query($db, $sql);
 
-    $sql = "INSERT INTO material_out(
+    $sql = "SELECT * FROM material WHERE material_code = '$materialCode'";
+    $result = mysqli_query($db, $sql);
+    $data = mysqli_fetch_object($result);
+
+    $sql = "INSERT INTO transactions(
         material_code,
-        total,
         created_at,
-        letter_number,
-        letter_to,
-        letter_for,
-        based_on,
-        contract_spk_factur,
-        tug8_tug9,
-        delivery_with
+        material_description,
+        terima,
+        keluar,
+        keterangan,
+        jumlah_saldo
     ) VALUES (
         '$materialCode',
-        '$jumlahKeluar',
         '$input->created_at',
-        '$input->letter_number',
-        '$input->letter_to',
-        '$input->letter_for',
-        '$input->based_on',
-        '$input->contract_spk_factur',
-        '$input->tug8_tug9',
-        '$input->delivery_with'
+        '$data->material_description',
+        0,
+        $jumlahKeluar,
+        'Keluar',
+        $data->stock_sap
     )";
+
     $result = mysqli_query($db, $sql);
 }
 
@@ -53,8 +51,9 @@ foreach ($barangKeluar as $barang) {
 
 <body>
     <script>
-    localStorage.removeItem('input');
-    window.location.href = "index.php";
+        localStorage.removeItem('input');
+        localStorage.removeItem('total');
+        window.location.href = "index.php";
     </script>
 </body>
 

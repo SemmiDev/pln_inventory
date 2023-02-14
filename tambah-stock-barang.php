@@ -10,9 +10,32 @@ if (isset($_POST['submit'])) {
         stock_sap = stock_sap + '$barang_masuk'
         WHERE material_id = '$material_id'
     ";
-
     $query = mysqli_query($db, $sql);
-    if ($query) {
+
+    $sql = "SELECT * FROM material WHERE material_id = '$material_id'";
+    $result = mysqli_query($db, $sql);
+    $data = mysqli_fetch_object($result);
+
+    $sql = "INSERT INTO transactions(
+        material_code,
+        created_at,
+        material_description,
+        terima,
+        keluar,
+        keterangan,
+        jumlah_saldo
+    ) VALUES (
+        '$data->material_code',
+        NOW(),
+        '$data->material_description',
+        $barang_masuk,
+        0,
+        'Masuk',
+        $data->stock_sap
+    )";
+
+    $result = mysqli_query($db, $sql);
+    if ($result) {
         header('Location: index.php?status=stok%20sukses%20ditambahkan');
     } else {
         header('Location: tambah-stock-barang.php?status=stok%20gagal%20ditambahkan');
@@ -73,7 +96,7 @@ $data = mysqli_fetch_array($query);
                     <li>
                         <a rel="noopener noreferrer" href="barang-keluar.php" class="flex items-center p-2 space-x-3 rounded-md">
                             <img src="./file-text.svg" class="w-5 h-5 fill-current dark:text-gray-400">
-                            <span>Barang Keluar</span>
+                            <span>Transaksi</span>
                         </a>
                     </li>
                 </ul>
@@ -101,11 +124,12 @@ $data = mysqli_fetch_array($query);
                             <input autofocus disabled value="<?php echo $data['material_code']; ?>" type="text" required name="material_code" id="url" placeholder="0001321301231" class="flex flex-1 p-3 border sm:text-sm rounded-r-md focus:ring-inset dark:border-gray-700 dark:text-gray-100 dark:bg-gray-800 focus:ring-violet-400">
                         </div>
 
-                        <div class="flex">
-                            <div class="flex flex-wrap items-center px-3 pointer-events-none w-28 sm:text-sm rounded-l-md dark:bg-gray-700">
-                                Nama Material</div>
-                            <input autofocus disabled value="<?php echo $data['material_name']; ?>" type="text" required name="material_code" id="url" placeholder="0001321301231" class="flex flex-1 p-3 border sm:text-sm rounded-r-md focus:ring-inset dark:border-gray-700 dark:text-gray-100 dark:bg-gray-800 focus:ring-violet-400">
-                        </div>
+                        <!--                        <div class="flex">-->
+                        <!--                            <div class="flex flex-wrap items-center px-3 pointer-events-none w-28 sm:text-sm rounded-l-md dark:bg-gray-700">-->
+                        <!--                                Nama Material</div>-->
+                        <!--                            <input autofocus disabled value="--><?php //echo $data['material_name'];
+                                                                                            ?><!--" type="text" required name="material_code" id="url" placeholder="0001321301231" class="flex flex-1 p-3 border sm:text-sm rounded-r-md focus:ring-inset dark:border-gray-700 dark:text-gray-100 dark:bg-gray-800 focus:ring-violet-400">-->
+                        <!--                        </div>-->
 
                         <div class="flex">
                             <div class="flex flex-wrap items-center px-3 pointer-events-none w-28 sm:text-sm rounded-l-md dark:bg-gray-700">

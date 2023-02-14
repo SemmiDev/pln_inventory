@@ -4,7 +4,7 @@ include 'koneksi.php';
 
 if (isset($_POST['submit'])) {
     $material_code = $_POST['material_code'];
-    $material_name = $_POST['material_name'];
+    $material_name = $_POST['material_name'] ?? '-';
     $material_description = $_POST['material_description'];
     $material_group = $_POST['material_group'];
     $base_unit_of_measure = $_POST['base_unit_of_measure'];
@@ -74,7 +74,7 @@ if (isset($_POST['submit'])) {
                         </a>
                     </li>
                     <li>
-                        <a rel="noopener noreferrer" href="#" class="flex items-center p-2 space-x-3 rounded-md">
+                        <a rel="noopener noreferrer" href="surat-jalan.php" class="flex items-center p-2 space-x-3 rounded-md">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-5 h-5 fill-current dark:text-gray-400">
                                 <path d="M440,424V88H352V13.005L88,58.522V424H16v32h86.9L352,490.358V120h56V456h88V424ZM320,453.642,120,426.056V85.478L320,51Z">
                                 </path>
@@ -86,7 +86,7 @@ if (isset($_POST['submit'])) {
                     <li>
                         <a rel="noopener noreferrer" href="barang-keluar.php" class="flex items-center p-2 space-x-3 rounded-md">
                             <img src="./file-text.svg" class="w-5 h-5 fill-current dark:text-gray-400">
-                            <span>Barang Keluar</span>
+                            <span>Transaksi</span>
                         </a>
                     </li>
                 </ul>
@@ -111,12 +111,6 @@ if (isset($_POST['submit'])) {
                             <div class="flex flex-wrap items-center px-3 pointer-events-none w-28 sm:text-sm rounded-l-md dark:bg-gray-700">
                                 Kode Material</div>
                             <input autofocus type="text" required name="material_code" id="url" placeholder="0001321301231" class="flex flex-1 p-3 border sm:text-sm rounded-r-md focus:ring-inset dark:border-gray-700 dark:text-gray-100 dark:bg-gray-800 focus:ring-violet-400">
-                        </div>
-
-                        <div class="flex">
-                            <div class="flex flex-wrap items-center px-3 pointer-events-none w-28 sm:text-sm rounded-l-md dark:bg-gray-700">
-                                Nama Material</div>
-                            <input autofocus type="text" required name="material_name" id="url" placeholder="Barang XXX" class="flex flex-1 p-3 border sm:text-sm rounded-r-md focus:ring-inset dark:border-gray-700 dark:text-gray-100 dark:bg-gray-800 focus:ring-violet-400">
                         </div>
 
                         <div class="flex">

@@ -1,10 +1,6 @@
--- scheme: mysql
-
-CREATE DATABASE IF NOT EXISTS `pln_inventory` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+DROP DATABASE IF EXISTS `pln_inventory`;
+CREATE DATABASE `pln_inventory` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `pln_inventory`;
-
-DROP TABLE IF EXISTS material_out;
-DROP TABLE IF EXISTS material;
 
 CREATE TABLE material (
     material_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -16,7 +12,6 @@ CREATE TABLE material (
     valuation_type VARCHAR(50) DEFAULT NULL,
     stock_sap INT DEFAULT NULL
 );
-
 
 CREATE TABLE material_out (
     material_out_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -32,5 +27,18 @@ CREATE TABLE material_out (
     tug8_tug9 VARCHAR(255) DEFAULT NULL,
     delivery_with VARCHAR(255) DEFAULT NULL,
 
-    FOREIGN KEY (material_code) REFERENCES material(material_code)
+    FOREIGN KEY (material_code) REFERENCES material(material_code) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE TABLE transactions (
+    transaction_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    material_code VARCHAR(50) NOT NULL,
+    created_at DATE NOT NULL,
+    material_description VARCHAR(50) NOT NULL,
+    terima INT DEFAULT NULL,
+    keluar INT DEFAULT NULL,
+    keterangan VARCHAR(255) DEFAULT NULL,
+    jumlah_saldo INT DEFAULT NULL,
+
+    FOREIGN KEY (material_code) REFERENCES material(material_code) ON DELETE CASCADE ON UPDATE CASCADE
 )

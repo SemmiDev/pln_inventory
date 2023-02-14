@@ -32,6 +32,10 @@
             var monthIndex = month - 1;
             var formattedDate = day + ' ' + monthNames[monthIndex] + ' ' + year;
 
+
+            // set title of html
+            document.title = input.letter_number + ' - ' + formattedDate;
+
             return formattedDate;
         }
     </script>
@@ -124,7 +128,6 @@
         <table class="p-2 mt-5 space-y-2 text-sm border">
             <tr>
                 <th class="w-40 p-3">NO</th>
-                <th class="w-40 p-3">NAMA MATERIAL</th>
                 <th class="w-40 p-3">NOMOR</th>
                 <th class="w-40 p-3">TIPE</th>
                 <th class="w-40 p-3">STN</th>
@@ -140,7 +143,6 @@
                     document.write(`
                 <tr class="border">
                     <td class='p-2 font-normal text-center'>${no}</td>
-                    <td  class='p-2 font-normal text-center'>${details.material_name ?? ''}</td>
                     <td  class='p-2 font-normal text-center'>${details.material_code ?? ''}</td>
                     <td  class='p-2 font-normal text-center'>${details.valuation_type ?? ''}</td>
                     <td  class='p-2 font-normal text-center'>${details.base_unit_of_measure ?? ''}</td>

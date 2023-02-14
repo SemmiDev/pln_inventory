@@ -68,7 +68,7 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
                     <li>
                         <a rel="noopener noreferrer" href="barang-keluar.php" class="flex items-center p-2 space-x-3 rounded-md">
                             <img src="./file-text.svg" class="w-5 h-5 text-black fill-current dark:text-gray-100">
-                            <span>Barang Keluar</span>
+                            <span>Transaksi</span>
                         </a>
                     </li>
                 </ul>
@@ -146,7 +146,6 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
                             <thead class="dark:bg-gray-700">
                                 <tr class="text-left">
                                     <th class="p-3">Material Code</th>
-                                    <th class="p-3">Material Name</th>
                                     <th class="p-3">Material Description</th>
                                     <th class="p-3">Material Group</th>
                                     <th class="p-3">Base Unit of Measure</th>
@@ -161,9 +160,6 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
                                     echo "<tr class='border-b border-opacity-20 dark:border-gray-700 dark:bg-gray-900'>
                                     <td class='p-3'>
                                         <p>$d[material_code]</p>
-                                    </td>
-                                    <td class='p-3'>
-                                        <p>$d[material_name]</p>
                                     </td>
                                     <td class='p-3'>
                                         <p>$d[material_description]</p>
@@ -183,7 +179,7 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
                                     <td class='flex items-center justify-center gap-1 p-3'>
                                         <a href='tambah-stock-barang.php?id=$d[material_id]'>
                                             <button type='button'
-                                                class='px-4 py-3 font-semibold text-white transition duration-200 ease-linear bg-green-400 border-2 border-green-400 rounded-lg hover:bg-green-600'>Tambah Stok</button>
+                                                class='px-4 py-3 font-semibold text-white transition duration-200 ease-linear bg-green-400 border-2 border-green-400 rounded-lg hover:bg-green-600'>Tambah</button>
                                         </a>
                                         <a href='edit-barang.php?id=$d[material_id]'>
                                             <button type='button'

@@ -2,9 +2,19 @@
 
 include 'koneksi.php';
 
-$sql = "SELECT * FROM material_out ORDER BY material_out_id DESC";
+$sql = "SELECT * FROM transactions ORDER BY transaction_id DESC";
 $query = mysqli_query($db, $sql);
 $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
+
+
+$sorting = $_GET['sort'] ?? 'ASC';
+
+if (isset($_GET['sort'])) {
+    $sorting = $_GET['sort'];
+    $sql = "SELECT * FROM transactions ORDER BY created_at $sorting";
+    $query = mysqli_query($db, $sql);
+    $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
+}
 
 ?>
 
@@ -55,7 +65,7 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
                     <li class="border-l-2 dark:bg-gray-800 border-sky-400 dark:text-gray-50">
                         <a rel="noopener noreferrer" href="barang-keluar.php" class="flex items-center p-2 space-x-3 rounded-md">
                             <img src="./file-text.svg" class="w-5 h-5 fill-current dark:text-gray-400">
-                            <span>Barang Keluar</span>
+                            <span>Transaksi</span>
                         </a>
                     </li>
                 </ul>
@@ -65,66 +75,76 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
         <main class="pt-6 bg-[#F7F8FC] w-full px-20">
             <div class="flex justify-between">
                 <div class="flex items-center gap-2">
-                    <h1 class="text-2xl font-bold">Barang Keluar</h1>
+                    <h1 class="text-2xl font-bold">Transaksi</h1>
                 </div>
             </div>
 
 
             <div class="p-5 bg-white rounded-lg mt-11">
-                <div class="container p-2 mx-auto sm:p-4 dark:text-gray-100">
-                    <div class="overflow-x-auto">
-                        <table class="min-w-full text-sm">
-                            <colgroup>
-                                <col>
-                                <col>
-                                <col>
-                                <col>
-                                <col>
-                                <col>
-                                <col class="w-24">
-                            </colgroup>
-                            <thead class="dark:bg-gray-700">
-                                <tr class="text-left">
-                                    <th class="p-3">Material Code</th>
-                                    <th class="p-3">Total Barang Keluar</th>
-                                    <th class="p-3">Tanggal</th>
-                                    <th class="p-3">Letter Number</th>
-                                    <th class="p-3 text-center">Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php
-                                foreach ($data as $d) {
-                                    echo "<tr class=' border-opacity-20 dark:border-gray-700 dark:bg-gray-900'>
-                                    <td class='p-3'>
-                                        <p>$d[material_code]</p>
-                                    </td>
-                                    <td class='p-3'>
-                                        <p>$d[total]</p>
-                                    </td>
+                <div class="flex justify-end gap-5 font-bold">
+                    <a href="barang-keluar.php?sort=<?php echo $sorting == 'ASC' ? 'DESC' : 'ASC' ?>">
+                        <div class="flex items-center gap-2 ">
+                            <img src="./sort.png" alt="">
+                            <span>Tanggal</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="container p-2 mx-auto sm:p-4 dark:text-gray-100">
+                <div class="overflow-x-auto">
+                    <table class="min-w-full text-sm">
+                        <colgroup>
+                            <col>
+                            <col>
+                            <col>
+                            <col>
+                            <col>
+                            <col>
+                        </colgroup>
+                        <thead class="dark:bg-gray-700">
+                            <tr class="text-left">
+                                <th class="p-3">Tanggal</th>
+                                <th class="p-3">Material Description</th>
+                                <th class="p-3">Masuk</th>
+                                <th class="p-3">Keluar</th>
+                                <th class="p-3">Jumlah Saldo</th>
+                                <th class="p-3">Keterangan</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            foreach ($data as $d) {
+                                echo "<tr class=' border-opacity-20 dark:border-gray-700 dark:bg-gray-900'>
                                     <td class='p-3'>
                                         <p>$d[created_at]</p>
                                     </td>
                                     <td class='p-3'>
-                                        <p>$d[letter_number]</p>
+                                        <p>$d[material_description]</p>
                                     </td>
-                                    <td class='flex items-center justify-center gap-1 p-3'>
-                                        <a href='barang-keluar-details.php?id=$d[material_out_id]'>
-                                            <button type='button'
-                                                class='px-4 py-3 font-semibold text-white transition duration-200 ease-linear bg-green-400 border-2 border-green-400 rounded-lg hover:bg-green-600'>Details</button>
-                                        </a>
+                                    <td class='p-3'>
+                                        <p>$d[terima]</p>
+                                    </td>
+                                    <td class='p-3'>
+                                        <p>$d[keluar]</p>
+                                    </td>
+
+                                    <td class='p-3'>
+                                        <p>$d[jumlah_saldo]</p>
+                                    </td>
+                                    <td class='p-3'>
+                                        <p>$d[keterangan]</p>
                                     </td>
                                 </tr>
                                 ";
-                                }
-                                ?>
-                            </tbody>
-                        </table>
-                    </div>
+                            }
+                            ?>
+                        </tbody>
+                    </table>
                 </div>
-
             </div>
-        </main>
+    </div>
+    </main>
     </div>
 </body>
 

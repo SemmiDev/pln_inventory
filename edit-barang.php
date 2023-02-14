@@ -5,7 +5,7 @@ include 'koneksi.php';
 if (isset($_POST['submit'])) {
     $material_id = $_POST['material_id'];
     $material_code = $_POST['material_code'];
-    $material_name = $_POST['material_name'];
+    $material_name = $_POST['material_name'] ?? '-';
     $material_description = $_POST['material_description'];
     $material_group = $_POST['material_group'];
     $base_unit_of_measure = $_POST['base_unit_of_measure'];
@@ -85,7 +85,7 @@ $data = mysqli_fetch_array($query);
                     <li>
                         <a rel="noopener noreferrer" href="barang-keluar.php" class="flex items-center p-2 space-x-3 rounded-md">
                             <img src="./file-text.svg" class="w-5 h-5 fill-current dark:text-gray-400">
-                            <span>Barang Keluar</span>
+                            <span>Transaksi</span>
                         </a>
                     </li>
                 </ul>
@@ -110,50 +110,54 @@ $data = mysqli_fetch_array($query);
 
                         <div class="flex">
                             <div class="flex flex-wrap items-center px-3 pointer-events-none w-28 sm:text-sm rounded-l-md dark:bg-gray-700">
-                                Kode Material</div>
-                            <input autofocus type="text" value="<?php echo $data['material_code']; ?>" required name="material_code" id="url" placeholder="0001321301231" class="flex flex-1 p-3 border sm:text-sm rounded-r-md focus:ring-inset dark:border-gray-700 dark:text-gray-100 dark:bg-gray-800 focus:ring-violet-400">
+                                Kode Material
+                            </div>
+                            <input autofocus type="text" value="<?php echo $data['material_code']; ?>" required name="material_code" readonly id="url" placeholder="0001321301231" class="flex flex-1 p-3 border sm:text-sm rounded-r-md focus:ring-inset dark:border-gray-700 dark:text-gray-100 dark:bg-gray-800 focus:ring-violet-400">
                         </div>
 
                         <div class="flex">
                             <div class="flex flex-wrap items-center px-3 pointer-events-none w-28 sm:text-sm rounded-l-md dark:bg-gray-700">
-                                Nama Material</div>
-                            <input autofocus type="text" value="<?php echo $data['material_name']; ?>" required name="material_name" id="url" placeholder="0001321301231" class="flex flex-1 p-3 border sm:text-sm rounded-r-md focus:ring-inset dark:border-gray-700 dark:text-gray-100 dark:bg-gray-800 focus:ring-violet-400">
-                        </div>
-
-                        <div class="flex">
-                            <div class="flex flex-wrap items-center px-3 pointer-events-none w-28 sm:text-sm rounded-l-md dark:bg-gray-700">
-                                Material Description</div>
+                                Material Description
+                            </div>
                             <input type="text" value="<?php echo $data['material_description']; ?>" required name="material_description" id="material_description" placeholder="TRF DIS XXX 1999" class="flex flex-1 p-3 border sm:text-sm rounded-r-md focus:ring-inset dark:border-gray-700 dark:text-gray-100 dark:bg-gray-800 focus:ring-violet-400">
                         </div>
 
                         <div class="flex">
                             <div class="flex flex-wrap items-center px-3 pointer-events-none w-28 sm:text-sm rounded-l-md dark:bg-gray-700">
-                                Material Group</div>
+                                Material Group
+                            </div>
                             <input type="text" value="<?php echo $data['material_group']; ?>" required name="material_group" id="url" placeholder="XM12312" class="flex flex-1 p-3 border sm:text-sm rounded-r-md focus:ring-inset dark:border-gray-700 dark:text-gray-100 dark:bg-gray-800 focus:ring-violet-400">
                         </div>
                         <div class="flex">
                             <div class="flex flex-wrap items-center px-3 pointer-events-none w-28 sm:text-sm rounded-l-md dark:bg-gray-700">
-                                Base Unit of Measure</div>
+                                Base Unit of Measure
+                            </div>
                             <input type="text" value="<?php echo $data['base_unit_of_measure']; ?>" required name="base_unit_of_measure" id="url" placeholder="U" class="flex flex-1 p-3 border sm:text-sm rounded-r-md focus:ring-inset dark:border-gray-700 dark:text-gray-100 dark:bg-gray-800 focus:ring-violet-400">
                         </div>
 
                         <div class="flex">
                             <div class="flex flex-wrap items-center px-3 pointer-events-none w-28 sm:text-sm rounded-l-md dark:bg-gray-700">
-                                Valuation Type</div>
+                                Valuation Type
+                            </div>
                             <input type="text" value="<?php echo $data['valuation_type']; ?>" required name="valuation_type" id="url" placeholder="Normal" class="flex flex-1 p-3 border sm:text-sm rounded-r-md focus:ring-inset dark:border-gray-700 dark:text-gray-100 dark:bg-gray-800 focus:ring-violet-400">
                         </div>
                         <div class="flex">
                             <div class="flex flex-wrap items-center px-3 pointer-events-none w-28 sm:text-sm rounded-l-md dark:bg-gray-700">
-                                Stock SAP</div>
+                                Stock SAP
+                            </div>
                             <input type="number" value="<?php echo $data['stock_sap']; ?>" required name="stock_sap" id="url" placeholder="35" class="flex flex-1 p-3 border sm:text-sm rounded-r-md focus:ring-inset dark:border-gray-700 dark:text-gray-100 dark:bg-gray-800 focus:ring-violet-400">
                         </div>
                     </fieldset>
 
                     <div class="flex items-center justify-center gap-2 mt-8">
-                        <button type="submit" name="submit" class="px-5 py-4 font-semibold text-white transition duration-200 ease-linear border-2 rounded-lg bg-sky-400 hover:bg-sky-600 border-sky-400">Simpan
-                            Perubahan</button>
+                        <button type="submit" name="submit" class="px-5 py-4 font-semibold text-white transition duration-200 ease-linear border-2 rounded-lg bg-sky-400 hover:bg-sky-600 border-sky-400">
+                            Simpan
+                            Perubahan
+                        </button>
                         <a href="index.php">
-                            <button type="button" class="px-5 py-4 font-semibold text-white transition duration-200 ease-linear bg-red-400 border-2 border-red-400 rounded-lg hover:bg-red-600">Batal</button>
+                            <button type="button" class="px-5 py-4 font-semibold text-white transition duration-200 ease-linear bg-red-400 border-2 border-red-400 rounded-lg hover:bg-red-600">
+                                Batal
+                            </button>
                         </a>
                     </div>
                 </form>

@@ -92,7 +92,7 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
                     <li>
                         <a rel="noopener noreferrer" href="barang-keluar.php" class="flex items-center p-2 space-x-3 rounded-md">
                             <img src="./file-text.svg" class="w-5 h-5 fill-current dark:text-gray-400">
-                            <span>Barang Keluar</span>
+                            <span>Transaksi</span>
                         </a>
                     </li>
                 </ul>
@@ -189,8 +189,10 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
                     <div class="max-w-[400px] space-y-2">
                         <div class="flex">
                             <div class="flex flex-wrap items-center px-3 pointer-events-none w-36 sm:text-sm rounded-l-md dark:bg-gray-700">
-                                Material</div>
-                            <select name="material" id="material" class="flex flex-1 p-3 border sm:text-sm rounded-r-md focus:ring-inset dark:border-gray-700 dark:text-gray-100 dark:bg-gray-800 focus:ring-violet-400">
+                                Material
+                            </div>
+
+                            <select name="material" id="material" class="w-44 flex flex-1 p-3 border sm:text-sm rounded-r-md focus:ring-inset dark:border-gray-700 dark:text-gray-100 dark:bg-gray-800 focus:ring-violet-400">
                                 <script>
                                     var materialSelect = document.getElementById('material');
                                     for (var i = 0; i < materialData.length; i++) {
@@ -200,7 +202,7 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
                                         }
 
                                         var el = document.createElement('option');
-                                        el.textContent = opt.material_code + ' 👉 tersedia ' + opt.stock_sap + ' Unit  ';
+                                        el.textContent = opt.material_code + ' 👉 ' + opt.stock_sap + ' Unit  ';
                                         el.value = JSON.stringify(opt);
                                         materialSelect.appendChild(el);
                                     }
@@ -211,16 +213,18 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
                         <div class="flex">
                             <div class="flex flex-wrap items-center px-3 pointer-events-none w-36 sm:text-sm rounded-l-md dark:bg-gray-700">
                                 Jumlah Keluar</div>
-                            <input type="number" id="jumlah_keluar" required name="valuation_type" placeholder="10" class="flex flex-1 p-3 border sm:text-sm rounded-r-md focus:ring-inset dark:border-gray-700 dark:text-gray-100 dark:bg-gray-800 focus:ring-violet-400">
+                            <input type="number" id="jumlah_keluar" required name="valuation_type" placeholder="10" class="w-60 flex flex-1 p-3 border sm:text-sm rounded-r-md focus:ring-inset dark:border-gray-700 dark:text-gray-100 dark:bg-gray-800 focus:ring-violet-400">
                         </div>
 
                         <div class="flex justify-end">
-                            <button onclick="addMaterial()" type="button" id="tambah-material" class="px-8 py-3 mt-5 font-semibold text-white transition duration-300 bg-black border rounded-lg hover:text-black hover:bg-white hover:border-black">Tambah</button>
+                            <button onclick="addMaterial()" type="button" id="tambah-material" class="w-44 px-8 py-3 mt-5 font-semibold text-white transition duration-300 bg-black border rounded-lg hover:text-black hover:bg-white hover:border-black">Tambah</button>
                         </div>
                     </div>
                 </div>
 
                 <div class="flex flex-col p-5 mt-2 bg-white rounded-lg gap-y-2" id="added-items">
+                    <div id="countTotalKeluar">
+                    </div>
                 </div>
             </div>
         </form>
@@ -230,12 +234,27 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
         function removeMaterial(el) {
             var id = el.id;
 
+            var tempTotal = 0;
             input.barang_keluar = input.barang_keluar.filter(function(item) {
+                if (item.barang_keluar_id === id) {
+                    tempTotal = item.jumlah_keluar;
+                }
                 return item.barang_keluar_id !== id;
             });
 
-            syncLocalStorage();
+            // get item on local storage and sub with tempTotal
+            var totalInLocalStorage = JSON.parse(localStorage.getItem('total'));
+            // change to number
+            totalInLocalStorage = Number(totalInLocalStorage);
+            totalInLocalStorage -= Number(tempTotal);
+            localStorage.setItem('total', JSON.stringify(totalInLocalStorage));
 
+
+            var totalInKeluar = document.getElementById('countTotalKeluar');
+            totalInKeluar.innerHTML = 'Total = ' + totalInLocalStorage + ' Unit';
+
+
+            syncLocalStorage();
             el.parentElement.parentElement.remove();
         }
 
@@ -264,13 +283,15 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
 
                 <div class="flex">
                     <div class="flex flex-wrap items-center px-3 bg-gray-300 pointer-events-none w-36 sm:text-sm rounded-l-md dark:bg-gray-700">Material Code</div>
-                    <input type="text" required name="material" id="url" value="` + materialName + `" placeholder="` +
+
+                <input type="text" required name="material" id="url" value="` + materialName + `" placeholder="` +
                     materialName + `" class="flex flex-1 p-3 border sm:text-sm rounded-r-md focus:ring-inset dark:border-gray-700 dark:text-gray-100 dark:bg-gray-800 focus:ring-violet-400" readonly>
                 </div>
 
                 <div class="flex">
                     <div class="flex flex-wrap items-center px-3 font-semibold bg-gray-300 pointer-events-none w-36 sm:text-sm rounded-l-md dark:bg-gray-700">Jumlah Keluar</div>
-                    <input type="text" required name="material" id="url" value="` + jumlahKeluar + `" placeholder="` +
+
+                    <input type="text" name="material" id="url" value="` + jumlahKeluar + `" placeholder="` +
                     jumlahKeluar + `" class="flex flex-1 p-3 border sm:text-sm rounded-r-md focus:ring-inset dark:border-gray-700 dark:text-gray-100 dark:bg-gray-800 focus:ring-violet-400" readonly>
                 </div>
             </div>
@@ -291,8 +312,13 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
             var div = document.createElement('div');
 
             // materialName split by '👉' and get the first index
-            var materialName = materialName.split('👉')[0];
-            var materialName = materialName.trim();
+            var materialCode = materialName.split('👉')[0];
+            materialCode = materialCode.trim();
+
+            let materialUnit = materialName.split('👉')[1];
+            materialUnit = materialUnit.trim();
+            materialUnit = materialUnit.split(' ');
+            materialUnit = materialUnit[0];
 
             function generateExactlyUniqueID() {
                 var id = Math.floor(Math.random() * 1000) + '|' + materialName + '|' + jumlahKeluar;
@@ -311,10 +337,22 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
 
             input.barang_keluar.push({
                 barang_keluar_id: idForCloseButton,
-                material_code: materialName,
+                material_code: materialCode,
                 jumlah_keluar: jumlahKeluar,
                 details: material,
             });
+
+            // total for local storage
+            var total = 0;
+            for (var i = 0; i < input.barang_keluar.length; i++) {
+                total += parseInt(input.barang_keluar[i].jumlah_keluar);
+            }
+
+            // set total to local storage
+            localStorage.setItem('total', total);
+
+            var totalInKeluar = document.getElementById('countTotalKeluar');
+            totalInKeluar.innerHTML = 'Total Barang Keluar = ' + total + ' Unit';
 
             syncLocalStorage();
 
