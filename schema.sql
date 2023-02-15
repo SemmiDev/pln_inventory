@@ -15,13 +15,12 @@ CREATE TABLE material (
 
 CREATE TABLE transactions (
     transaction_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    material_id VARCHAR(50) NOT NULL,
+    material_id INT NOT NULL,
     created_at DATE NOT NULL,
     material_description VARCHAR(50) NOT NULL,
-    terima INT DEFAULT NULL,
-    keluar INT DEFAULT NULL,
+    terima INT DEFAULT 0,
+    keluar INT DEFAULT 0,
     keterangan VARCHAR(255) DEFAULT NULL,
-    jumlah_saldo INT DEFAULT NULL,
-
+    jumlah_saldo INT DEFAULT 0,
     FOREIGN KEY (material_id) REFERENCES material(material_id) ON DELETE CASCADE ON UPDATE CASCADE
 )
