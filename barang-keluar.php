@@ -138,6 +138,17 @@ if (isset($_GET['search'])) {
                             <tbody>
                                 <?php
                                 foreach ($data as $d) {
+                                    $keterangan = $d['keterangan'];
+                                    $color = "text-green-500";
+
+                                    if ($keterangan == "") {
+                                        $keterangan = "Keluar";
+                                        $color = "text-red-500";
+                                    } else if ($keterangan != "Masuk") {
+                                        $keterangan = "Keluar - " . $keterangan;
+                                        $color = "text-red-500";
+                                    }
+
                                     echo "<tr class=' border-opacity-20 dark:border-gray-700 dark:bg-gray-900'>
                                     <td class='p-3'>
                                         <p>$d[created_at]</p>
@@ -156,7 +167,9 @@ if (isset($_GET['search'])) {
                                         <p>$d[jumlah_saldo]</p>
                                     </td>
                                     <td class='p-3'>
-                                        <p>$d[keterangan]</p>
+                                        <p class='$color'>
+                                        $keterangan
+                                    </p>
                                     </td>
                                 </tr>
                                 ";

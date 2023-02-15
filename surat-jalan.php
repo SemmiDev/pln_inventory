@@ -177,7 +177,9 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
                                     Keterangan
                                 </div>
 
-                                <textarea placeholder="Keterangan" onchange="handleChangeInput(event)" name="keterangan" id="keterangan" cols="30" rows="3" class="flex flex-1 p-3 border sm:text-sm rounded-r-md focus:ring-inset dark:border-gray-700 dark:text-gray-100 dark:bg-gray-800 focus:ring-violet-400"></textarea>
+                                <textarea placeholder="Keterangan"
+                                onchange="handleChangeInput(event)" name="keterangan" id="keterangan" cols="30" rows="3" class="flex flex-1 p-3 border sm:text-sm rounded-r-md focus:ring-inset dark:border-gray-700 dark:text-gray-100 dark:bg-gray-800 focus:ring-violet-400">
+                            </textarea>
                             </div>
 
                         </fieldset>
