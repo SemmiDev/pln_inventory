@@ -18,7 +18,7 @@ foreach ($barangKeluar as $barang) {
     $data = mysqli_fetch_object($result);
 
     $sql = "INSERT INTO transactions(
-        material_code,
+        material_id,
         created_at,
         material_description,
         terima,
@@ -26,7 +26,7 @@ foreach ($barangKeluar as $barang) {
         keterangan,
         jumlah_saldo
     ) VALUES (
-        '$materialCode',
+        '$data->material_id',
         '$input->created_at',
         '$data->material_description',
         0,

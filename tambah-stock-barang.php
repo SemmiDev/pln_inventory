@@ -44,7 +44,6 @@ if (isset($_POST['submit'])) {
 }
 
 $id = $_GET['id'];
-var_dump($id);
 $sql = "SELECT * FROM material WHERE material_id = '$id'";
 $query = mysqli_query($db, $sql);
 $data = mysqli_fetch_array($query);

@@ -40,7 +40,7 @@
         }
     </script>
 
-    <main class="max-w-[800px] mx-auto min-h-screen w-full p-5 border">
+    <main class="max-w-[800px] mx-auto w-full p-5 border">
         <div class="flex items-start justify-between">
             <div class="font-bold">
                 <h1 class="font-bold">PT PLN (PERSERO)</h1>
