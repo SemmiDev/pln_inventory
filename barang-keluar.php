@@ -17,7 +17,7 @@ if (isset($_GET['sort'])) {
 
 if (isset($_GET['search'])) {
     $search = $_GET['search'];
-    $sql = "SELECT * FROM transactions WHERE material_description LIKE '%$search%'";
+    $sql = "SELECT * FROM transactions WHERE material_description LIKE '%$search%' ORDER BY created_at DESC";
     $query = mysqli_query($db, $sql);
     $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
 }
