@@ -64,13 +64,13 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
                 <div>
                     <h2 class="text-lg font-semibold">Dashboard</h2>
                     <span class="flex items-center space-x-1">
-                        <a rel="noopener noreferrer" href="#" class="text-xs hover:underline dark:text-gray-400">PLN
+                        <a rel="noopener noreferrer" href="#" class="text-lg hover:underline dark:text-gray-400">PLN
                             Inventory</a>
                     </span>
                 </div>
             </div>
             <div class="divide-y divide-gray-700">
-                <ul class="pt-2 pb-4 space-y-1 text-sm">
+                <ul class="pt-2 pb-4 space-y-1 text-lg">
                     <li>
                         <a rel="noopener noreferrer" href="index.php" class="flex items-center p-2 space-x-3 rounded-md">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-5 h-5 fill-current dark:text-gray-400">
@@ -124,61 +124,60 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
                     <div class="max-w-[400px]">
                         <fieldset class="w-full space-y-2 dark:text-gray-100">
                             <div class="flex">
-                                <div class="flex flex-wrap items-center px-3 pointer-events-none w-36 sm:text-sm rounded-l-md dark:bg-gray-700">
+                                <div class="flex flex-wrap items-center w-40 px-3 pointer-events-none sm:text-lg rounded-l-md dark:bg-gray-700">
                                     Tanggal</div>
-                                <input type="date" onchange="handleChangeInput(event)" required name="created_at" id="created_at" placeholder="0001321301231" class="flex flex-1 p-3 border sm:text-sm rounded-r-md focus:ring-inset dark:border-gray-700 dark:text-gray-100 dark:bg-gray-800 focus:ring-violet-400">
+                                <input type="date" onchange="handleChangeInput(event)" required name="created_at" id="created_at" placeholder="0001321301231" class="flex flex-1 p-3 border sm:text-lg rounded-r-md focus:ring-inset dark:border-gray-700 dark:text-gray-100 dark:bg-gray-800 focus:ring-violet-400">
                             </div>
 
                             <div class="flex">
-                                <div class="flex flex-wrap items-center px-3 pointer-events-none w-36 sm:text-sm rounded-l-md dark:bg-gray-700">
+                                <div class="flex flex-wrap items-center w-40 px-3 pointer-events-none sm:text-lg rounded-l-md dark:bg-gray-700">
                                     Nomor Surat</div>
-                                <input type="text" onchange="handleChangeInput(event)" required name="letter_number" id="letter_number" placeholder="150/LOG/SB - II / 2023" class="flex flex-1 p-3 border sm:text-sm rounded-r-md focus:ring-inset dark:border-gray-700 dark:text-gray-100 dark:bg-gray-800 focus:ring-violet-400">
+                                <input type="text" onchange="handleChangeInput(event)" required name="letter_number" id="letter_number" placeholder="150/LOG/SB - II / 2023" class="flex flex-1 p-3 border sm:text-lg rounded-r-md focus:ring-inset dark:border-gray-700 dark:text-gray-100 dark:bg-gray-800 focus:ring-violet-400">
                             </div>
 
                             <div class="flex">
-                                <div class="flex flex-wrap items-center px-3 pointer-events-none w-36 sm:text-sm rounded-l-md dark:bg-gray-700">
+                                <div class="flex flex-wrap items-center w-40 px-3 pointer-events-none sm:text-lg rounded-l-md dark:bg-gray-700">
                                     Kepada</div>
-                                <input type="text" onchange="handleChangeInput(event)" required name="letter_to" id="letter_to" placeholder="Petugas Keamanan" class="flex flex-1 p-3 border sm:text-sm rounded-r-md focus:ring-inset dark:border-gray-700 dark:text-gray-100 dark:bg-gray-800 focus:ring-violet-400">
+                                <input type="text" onchange="handleChangeInput(event)" required name="letter_to" id="letter_to" placeholder="Petugas Keamanan" class="flex flex-1 p-3 border sm:text-lg rounded-r-md focus:ring-inset dark:border-gray-700 dark:text-gray-100 dark:bg-gray-800 focus:ring-violet-400">
                             </div>
 
                             <div class="flex">
-                                <div class="flex flex-wrap items-center px-3 pointer-events-none w-36 sm:text-sm rounded-l-md dark:bg-gray-700">
+                                <div class="flex flex-wrap items-center w-40 px-3 pointer-events-none sm:text-lg rounded-l-md dark:bg-gray-700">
                                     Untuk</div>
-                                <input type="text" onchange="handleChangeInput(event)" required name="letter_for" id="letter_for" placeholder="PEK Jardus" class="flex flex-1 p-3 border sm:text-sm rounded-r-md focus:ring-inset dark:border-gray-700 dark:text-gray-100 dark:bg-gray-800 focus:ring-violet-400">
+                                <input type="text" onchange="handleChangeInput(event)" required name="letter_for" id="letter_for" placeholder="PEK Jardus" class="flex flex-1 p-3 border sm:text-lg rounded-r-md focus:ring-inset dark:border-gray-700 dark:text-gray-100 dark:bg-gray-800 focus:ring-violet-400">
                             </div>
 
                             <div class="flex">
-                                <div class="flex flex-wrap items-center px-3 pointer-events-none w-36 sm:text-sm rounded-l-md dark:bg-gray-700">
+                                <div class="flex flex-wrap items-center w-40 px-3 pointer-events-none sm:text-lg rounded-l-md dark:bg-gray-700">
                                     Berdasarkan</div>
-                                <input type="text" onchange="handleChangeInput(event)" required name="based_on" id="based_on" placeholder="XXX" class="flex flex-1 p-3 border sm:text-sm rounded-r-md focus:ring-inset dark:border-gray-700 dark:text-gray-100 dark:bg-gray-800 focus:ring-violet-400">
+                                <input type="text" onchange="handleChangeInput(event)" required name="based_on" id="based_on" placeholder="XXX" class="flex flex-1 p-3 border sm:text-lg rounded-r-md focus:ring-inset dark:border-gray-700 dark:text-gray-100 dark:bg-gray-800 focus:ring-violet-400">
                             </div>
 
                             <div class="flex">
-                                <div class="flex flex-wrap items-center px-3 pointer-events-none w-36 sm:text-sm rounded-l-md dark:bg-gray-700">
-                                    Kontrak/SKP/Faktur</div>
-                                <input type="text" onchange="handleChangeInput(event)" required name="contract_spk_factur" id="contract_spk_factur" placeholder="SPK 157.XX" class="flex flex-1 p-3 border sm:text-sm rounded-r-md focus:ring-inset dark:border-gray-700 dark:text-gray-100 dark:bg-gray-800 focus:ring-violet-400">
+                                <div class="flex flex-wrap items-center w-40 px-3 pointer-events-none sm:text-lg rounded-l-md dark:bg-gray-700">
+                                    SKP / Faktur</div>
+                                <input type="text" onchange="handleChangeInput(event)" required name="contract_spk_factur" id="contract_spk_factur" placeholder="SPK 157.XX" class="flex flex-1 p-3 border sm:text-lg rounded-r-md focus:ring-inset dark:border-gray-700 dark:text-gray-100 dark:bg-gray-800 focus:ring-violet-400">
                             </div>
 
                             <div class="flex">
-                                <div class="flex flex-wrap items-center px-3 pointer-events-none w-36 sm:text-sm rounded-l-md dark:bg-gray-700">
+                                <div class="flex flex-wrap items-center w-40 px-3 pointer-events-none sm:text-lg rounded-l-md dark:bg-gray-700">
                                     TUG-8 & TUG-9</div>
-                                <input type="text" onchange="handleChangeInput(event)" required name="tug8_tug9" id="tug8_tug9" placeholder="34223" class="flex flex-1 p-3 border sm:text-sm rounded-r-md focus:ring-inset dark:border-gray-700 dark:text-gray-100 dark:bg-gray-800 focus:ring-violet-400">
+                                <input type="text" onchange="handleChangeInput(event)" required name="tug8_tug9" id="tug8_tug9" placeholder="34223" class="flex flex-1 p-3 border sm:text-lg rounded-r-md focus:ring-inset dark:border-gray-700 dark:text-gray-100 dark:bg-gray-800 focus:ring-violet-400">
                             </div>
 
                             <div class="flex">
-                                <div class="flex flex-wrap items-center px-3 pointer-events-none w-36 sm:text-sm rounded-l-md dark:bg-gray-700">
+                                <div class="flex flex-wrap items-center w-40 px-3 pointer-events-none sm:text-lg rounded-l-md dark:bg-gray-700">
                                     Dibawa Dengan</div>
-                                <input type="text" onchange="handleChangeInput(event)" required name="delivery_with" id="delivery_with" placeholder="PT Mega Distribusi" class="flex flex-1 p-3 border sm:text-sm rounded-r-md focus:ring-inset dark:border-gray-700 dark:text-gray-100 dark:bg-gray-800 focus:ring-violet-400">
+                                <input type="text" onchange="handleChangeInput(event)" required name="delivery_with" id="delivery_with" placeholder="PT Mega Distribusi" class="flex flex-1 p-3 border sm:text-lg rounded-r-md focus:ring-inset dark:border-gray-700 dark:text-gray-100 dark:bg-gray-800 focus:ring-violet-400">
                             </div>
 
 
                             <div class="flex">
-                                <div class="flex flex-wrap items-center px-3 pointer-events-none w-36 sm:text-sm rounded-l-md dark:bg-gray-700">
+                                <div class="flex flex-wrap items-center w-40 px-3 pointer-events-none sm:text-lg rounded-l-md dark:bg-gray-700">
                                     Keterangan
                                 </div>
 
-                                <textarea placeholder="Keterangan"
-                                onchange="handleChangeInput(event)" name="keterangan" id="keterangan" cols="30" rows="3" class="flex flex-1 p-3 border sm:text-sm rounded-r-md focus:ring-inset dark:border-gray-700 dark:text-gray-100 dark:bg-gray-800 focus:ring-violet-400">
+                                <textarea placeholder="Keterangan" onchange="handleChangeInput(event)" name="keterangan" id="keterangan" cols="30" rows="3" class="flex flex-1 p-3 border sm:text-lg rounded-r-md focus:ring-inset dark:border-gray-700 dark:text-gray-100 dark:bg-gray-800 focus:ring-violet-400">
                             </textarea>
                             </div>
 
@@ -201,13 +200,11 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
                 <div class="p-5 mt-2 bg-white rounded-lg">
                     <div class="max-w-[400px] space-y-2">
                         <div class="flex">
-                            <div class="flex flex-wrap items-center px-3 pointer-events-none w-36 sm:text-sm rounded-l-md dark:bg-gray-700">
+                            <div class="flex flex-wrap items-center w-40 px-3 pointer-events-none sm:text-lg rounded-l-md dark:bg-gray-700">
                                 Material
                             </div>
 
-
-
-                            <select name="material" id="material" class="flex flex-1 p-3 border w-44 sm:text-sm rounded-r-md focus:ring-inset dark:border-gray-700 dark:text-gray-100 dark:bg-gray-800 focus:ring-violet-400">
+                            <select name="material" id="material" class="flex flex-1 p-3 border w-44 sm:text-lg rounded-r-md focus:ring-inset dark:border-gray-700 dark:text-gray-100 dark:bg-gray-800 focus:ring-violet-400">
                                 <script>
                                     var materialSelect = document.getElementById('material');
                                     for (var i = 0; i < materialData.length; i++) {
@@ -217,7 +214,7 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
                                         }
 
                                         var el = document.createElement('option');
-                                        el.textContent = opt.material_code + ' 👉 ' + opt.stock_sap + ' Unit  ';
+                                        el.textContent = opt.material_description + ' 👉 ' + opt.stock_sap + ' Unit  ';
                                         el.value = JSON.stringify(opt);
                                         materialSelect.appendChild(el);
                                     }
@@ -236,7 +233,7 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
                                         }
 
                                         var el = document.createElement('option');
-                                        el.textContent = opt.material_code + ' 👉 ' + opt.stock_sap + ' Unit  ';
+                                        el.textContent = opt.material_description + ' 👉 ' + opt.stock_sap + ' Unit  ';
                                         el.value = JSON.stringify(opt);
                                         materialSelect.appendChild(el);
                                     }
@@ -245,9 +242,9 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
                         </div>
 
                         <div class="flex">
-                            <div class="flex flex-wrap items-center px-3 pointer-events-none w-36 sm:text-sm rounded-l-md dark:bg-gray-700">
+                            <div class="flex flex-wrap items-center w-40 px-3 pointer-events-none sm:text-lg rounded-l-md dark:bg-gray-700">
                                 Jumlah Keluar</div>
-                            <input type="number" id="jumlah_keluar" required name="valuation_type" placeholder="10" class="flex flex-1 p-3 border w-60 sm:text-sm rounded-r-md focus:ring-inset dark:border-gray-700 dark:text-gray-100 dark:bg-gray-800 focus:ring-violet-400">
+                            <input type="number" id="jumlah_keluar" required name="valuation_type" placeholder="10" class="flex flex-1 p-3 border w-60 sm:text-lg rounded-r-md focus:ring-inset dark:border-gray-700 dark:text-gray-100 dark:bg-gray-800 focus:ring-violet-400">
                         </div>
 
                         <div class="flex justify-end">
@@ -258,6 +255,7 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
 
                 <div class="flex flex-col p-5 mt-2 bg-white rounded-lg gap-y-2" id="added-items">
                     <div id="countTotalKeluar">
+
                     </div>
                 </div>
             </div>
@@ -275,11 +273,11 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
 
                     const barangKeluarId = item.barang_keluar_id.split('👉');
                     const left = barangKeluarId[0].split('|');
-                    const materialCode = left[1]
+                    const materialDescription = left[1]
 
                     // add stock
                     for (var i = 0; i < materialData.length; i++) {
-                        if (materialData[i].material_code.trim() === materialCode.trim()) {
+                        if (materialData[i].material_description.trim() === materialDescription.trim()) {
                             const temp1 = Number(materialData[i].stock_sap);
                             const temp2 = Number(item.jumlah_keluar);
                             materialData[i].stock_sap = temp1 + temp2;
@@ -317,7 +315,7 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
             for (var i = 0; i < input.barang_keluar.length; i++) {
                 var div = document.createElement('div');
                 let idForCloseButton = input.barang_keluar[i].barang_keluar_id;
-                let materialName = input.barang_keluar[i].material_code;
+                let materialDesription = input.barang_keluar[i].material_description;
                 let materialId = input.barang_keluar[i].material_id;
                 let jumlahKeluar = input.barang_keluar[i].jumlah_keluar;
 
@@ -333,17 +331,17 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
                 </div>
 
                 <div class="flex">
-                    <div class="flex flex-wrap items-center px-3 bg-gray-300 pointer-events-none w-36 sm:text-sm rounded-l-md dark:bg-gray-700">Material Code</div>
-
-                <input type="text" required name="material" id="url" value="` + materialName + `" placeholder="` +
-                    materialName + `" class="flex flex-1 p-3 border sm:text-sm rounded-r-md focus:ring-inset dark:border-gray-700 dark:text-gray-100 dark:bg-gray-800 focus:ring-violet-400" readonly>
+                    <div class="flex flex-wrap items-center w-40 px-3 bg-gray-300 pointer-events-none sm:text-lg rounded-l-md dark:bg-gray-700">Material Name</div>
+                <input type="text" required name="material" id="url" value="` + materialDesription +
+                    `" placeholder="` +
+                    materialDesription + `" class="flex flex-1 p-3 border sm:text-lg rounded-r-md focus:ring-inset dark:border-gray-700 dark:text-gray-100 dark:bg-gray-800 focus:ring-violet-400" readonly>
                 </div>
 
                 <div class="flex">
-                    <div class="flex flex-wrap items-center px-3 font-semibold bg-gray-300 pointer-events-none w-36 sm:text-sm rounded-l-md dark:bg-gray-700">Jumlah Keluar</div>
+                    <div class="flex flex-wrap items-center w-40 px-3 font-semibold bg-gray-300 pointer-events-none sm:text-lg rounded-l-md dark:bg-gray-700">Jumlah Keluar</div>
 
                     <input type="text" name="material" id="url" value="` + jumlahKeluar + `" placeholder="` +
-                    jumlahKeluar + `" class="flex flex-1 p-3 border sm:text-sm rounded-r-md focus:ring-inset dark:border-gray-700 dark:text-gray-100 dark:bg-gray-800 focus:ring-violet-400" readonly>
+                    jumlahKeluar + `" class="flex flex-1 p-3 border sm:text-lg rounded-r-md focus:ring-inset dark:border-gray-700 dark:text-gray-100 dark:bg-gray-800 focus:ring-violet-400" readonly>
                 </div>
             </div>
             `;
@@ -363,12 +361,12 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
             var div = document.createElement('div');
 
             // materialName split by '👉' and get the first index
-            var materialCode = materialName.split('👉')[0];
-            materialCode = materialCode.trim();
+            var materialDesription = materialName.split('👉')[0];
+            materialDesription = materialDesription.trim();
 
             // loop the materialdata for substracting the stock
             for (var i = 0; i < materialData.length; i++) {
-                if (materialData[i].material_code === materialCode) {
+                if (materialData[i].material_description === materialDesription) {
                     var stock = materialData[i].stock_sap;
 
                     stock = Number(stock);
@@ -410,7 +408,7 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
 
             input.barang_keluar.push({
                 barang_keluar_id: idForCloseButton,
-                material_code: materialCode,
+                material_description: materialDesription,
                 jumlah_keluar: jumlahKeluar,
                 details: material,
             });
@@ -441,15 +439,16 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
                 </div>
 
                 <div class="flex">
-                    <div class="flex flex-wrap items-center px-3 bg-gray-300 pointer-events-none w-36 sm:text-sm rounded-l-md dark:bg-gray-700">Material Code</div>
-                    <input type="text" required name="material" id="url" value="` + materialName + `" placeholder="` +
-                materialName + `" class="flex flex-1 p-3 border sm:text-sm rounded-r-md focus:ring-inset dark:border-gray-700 dark:text-gray-100 dark:bg-gray-800 focus:ring-violet-400" readonly>
+                    <div class="flex flex-wrap items-center w-40 px-3 bg-gray-300 pointer-events-none sm:text-lg rounded-l-md dark:bg-gray-700">Material Name</div>
+                    <input type="text" required name="material" id="url" value="` + materialDesription +
+                `" placeholder="` +
+                materialDesription + `" class="flex flex-1 p-3 border sm:text-lg rounded-r-md focus:ring-inset dark:border-gray-700 dark:text-gray-100 dark:bg-gray-800 focus:ring-violet-400" readonly>
                 </div>
 
                 <div class="flex">
-                    <div class="flex flex-wrap items-center px-3 font-semibold bg-gray-300 pointer-events-none w-36 sm:text-sm rounded-l-md dark:bg-gray-700">Jumlah Keluar</div>
+                    <div class="flex flex-wrap items-center w-40 px-3 font-semibold bg-gray-300 pointer-events-none sm:text-lg rounded-l-md dark:bg-gray-700">Jumlah Keluar</div>
                     <input type="text" required name="material" id="url" value="` + jumlahKeluar + `" placeholder="` +
-                jumlahKeluar + `" class="flex flex-1 p-3 border sm:text-sm rounded-r-md focus:ring-inset dark:border-gray-700 dark:text-gray-100 dark:bg-gray-800 focus:ring-violet-400" readonly>
+                jumlahKeluar + `" class="flex flex-1 p-3 border sm:text-lg rounded-r-md focus:ring-inset dark:border-gray-700 dark:text-gray-100 dark:bg-gray-800 focus:ring-violet-400" readonly>
                 </div>
             </div>
             `;

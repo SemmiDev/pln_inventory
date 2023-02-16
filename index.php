@@ -39,13 +39,13 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
                 <div>
                     <h2 class="text-lg font-semibold">Dashboard</h2>
                     <span class="flex items-center space-x-1">
-                        <a rel="noopener noreferrer" href="#" class="text-xs hover:underline dark:text-gray-400">PLN
+                        <a rel="noopener noreferrer" href="#" class="text-lg hover:underline dark:text-gray-400">PLN
                             Inventory</a>
                     </span>
                 </div>
             </div>
             <div class="divide-y divide-gray-700">
-                <ul class="pt-2 pb-4 space-y-1 text-sm">
+                <ul class="pt-2 pb-4 space-y-1 text-lg">
                     <li class="border-l-2 dark:bg-gray-800 border-sky-400 dark:text-gray-50">
                         <a rel="noopener noreferrer" href="index.php" class="flex items-center p-2 space-x-3 rounded-md">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-5 h-5 fill-current dark:text-gray-400">
@@ -83,7 +83,7 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
                     if (isset($_GET['search'])) {
                         $keyword = $_GET['search'];
                         // terdapat n hasil pencarian untuk keyword
-                        echo "<span class='text-sm font-semibold text-pink-400 dark:text-gray-500'>(terdapat " . mysqli_num_rows($query) . " hasil pencarian untuk keyword '$keyword')</span>";
+                        echo "<span class='text-lg font-semibold text-pink-400 dark:text-gray-500'>(terdapat " . mysqli_num_rows($query) . " hasil pencarian untuk keyword '$keyword')</span>";
                     }
                     ?>
                 </div>
@@ -99,7 +99,7 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
                                     </svg>
                                 </button>
                             </span>
-                            <input type="search" name="search" placeholder="Search..." class="w-32 py-2 pl-10 text-sm rounded-md sm:w-auto focus:outline-none dark:bg-gray-800 dark:text-gray-100 focus:dark:bg-gray-900 focus:dark:border-violet-400">
+                            <input type="search" name="search" placeholder="Search..." class="w-32 py-2 pl-10 text-lg rounded-md sm:w-auto focus:outline-none dark:bg-gray-800 dark:text-gray-100 focus:dark:bg-gray-900 focus:dark:border-violet-400">
                             <input type="submit" hidden />
                         </div>
                     </fieldset>
@@ -114,7 +114,7 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
                         <?php
                         if (isset($_GET['status'])) {
                             $status = $_GET['status'];
-                            echo "<span class='text-sm font-semibold text-sky-600'>$status</span>";
+                            echo "<span class='text-lg font-semibold text-sky-600'>$status</span>";
                         }
                         ?>
                     </div>
@@ -122,7 +122,7 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
                         <a href="index.php?sort=<?php echo $sorting == 'ASC' ? 'DESC' : 'ASC' ?>">
                             <div class="flex items-center gap-2 ">
                                 <img src="./sort.png" alt="">
-                                <span>Urutkan</span>
+                                <span class="text-lg">Urutkan</span>
                             </div>
                         </a>
                     </div>
@@ -133,7 +133,7 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
 
                 <div class="container p-2 mx-auto sm:p-4 dark:text-gray-100">
                     <div class="overflow-x-auto">
-                        <table class="min-w-full text-sm">
+                        <table class="min-w-full text-lg">
                             <colgroup>
                                 <col>
                                 <col>
@@ -145,9 +145,9 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
                             </colgroup>
                             <thead class="dark:bg-gray-700">
                                 <tr class="text-left">
-                                    <th class="p-3">Material Code</th>
-                                    <th class="p-3">Material Description</th>
-                                    <th class="p-3">Material Group</th>
+                                    <th class="p-3">Code</th>
+                                    <th class="p-3">Description</th>
+                                    <th class="p-3">Group</th>
                                     <th class="p-3">Base Unit of Measure</th>
                                     <th class="p-3">Valuation Type</th>
                                     <th class="p-3">Stok SAP</th>

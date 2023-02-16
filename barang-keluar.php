@@ -41,13 +41,13 @@ if (isset($_GET['search'])) {
                 <div>
                     <h2 class="text-lg font-semibold">Dashboard</h2>
                     <span class="flex items-center space-x-1">
-                        <a rel="noopener noreferrer" href="#" class="text-xs hover:underline dark:text-gray-400">PLN
+                        <a rel="noopener noreferrer" href="#" class="text-lg hover:underline dark:text-gray-400">PLN
                             Inventory</a>
                     </span>
                 </div>
             </div>
             <div class="divide-y divide-gray-700">
-                <ul class="pt-2 pb-4 space-y-1 text-sm">
+                <ul class="pt-2 pb-4 space-y-1 text-lg">
                     <li>
                         <a rel="noopener noreferrer" href="index.php" class="flex items-center p-2 space-x-3 rounded-md">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-5 h-5 fill-current dark:text-gray-400">
@@ -95,7 +95,7 @@ if (isset($_GET['search'])) {
                                     </svg>
                                 </button>
                             </span>
-                            <input type="search" name="search" placeholder="Search..." class="w-32 py-2 pl-10 text-sm rounded-md sm:w-auto focus:outline-none dark:bg-gray-800 dark:text-gray-100 focus:dark:bg-gray-900 focus:dark:border-violet-400">
+                            <input type="search" name="search" placeholder="Search..." class="w-32 py-2 pl-10 text-lg rounded-md sm:w-auto focus:outline-none dark:bg-gray-800 dark:text-gray-100 focus:dark:bg-gray-900 focus:dark:border-violet-400">
                             <input type="submit" hidden />
                         </div>
                     </fieldset>
@@ -116,7 +116,7 @@ if (isset($_GET['search'])) {
 
                 <div class="container p-2 mx-auto sm:p-4 dark:text-gray-100">
                     <div class="overflow-x-auto">
-                        <table class="min-w-full text-sm">
+                        <table class="min-w-full text-lg">
                             <colgroup>
                                 <col>
                                 <col>

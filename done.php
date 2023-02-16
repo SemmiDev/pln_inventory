@@ -7,13 +7,13 @@ $input = json_decode($input);
 $barangKeluar = $input->barang_keluar;
 
 foreach ($barangKeluar as $barang) {
-    $materialCode = $barang->material_code;
+    $materialDesc = $barang->material_description;
     $jumlahKeluar = $barang->jumlah_keluar;
 
-    $sql = "UPDATE material SET stock_sap = stock_sap - $jumlahKeluar WHERE material_code = '$materialCode'";
+    $sql = "UPDATE material SET stock_sap = stock_sap - $jumlahKeluar WHERE material_description = '$materialDesc'";
     $result = mysqli_query($db, $sql);
 
-    $sql = "SELECT * FROM material WHERE material_code = '$materialCode'";
+    $sql = "SELECT * FROM material WHERE material_description = '$materialDesc'";
     $result = mysqli_query($db, $sql);
     $data = mysqli_fetch_object($result);
 
@@ -51,9 +51,9 @@ foreach ($barangKeluar as $barang) {
 
 <body>
     <script>
-    localStorage.removeItem('input');
-    localStorage.removeItem('total');
-    window.location.href = "index.php";
+        localStorage.removeItem('input');
+        localStorage.removeItem('total');
+        window.location.href = "index.php";
     </script>
 </body>
 

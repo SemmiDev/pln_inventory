@@ -57,13 +57,13 @@ if (isset($_POST['submit'])) {
                 <div>
                     <h2 class="text-lg font-semibold">Dashboard</h2>
                     <span class="flex items-center space-x-1">
-                        <a rel="noopener noreferrer" href="#" class="text-xs hover:underline dark:text-gray-400">PLN
+                        <a rel="noopener noreferrer" href="#" class="text-lg hover:underline dark:text-gray-400">PLN
                             Inventory</a>
                     </span>
                 </div>
             </div>
             <div class="divide-y divide-gray-700">
-                <ul class="pt-2 pb-4 space-y-1 text-sm">
+                <ul class="pt-2 pb-4 space-y-1 text-lg">
                     <li class="border-l-2 dark:bg-gray-800 border-sky-400 dark:text-gray-50">
                         <a rel="noopener noreferrer" href="index.php" class="flex items-center p-2 space-x-3 rounded-md">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-5 h-5 fill-current dark:text-gray-400">
@@ -108,37 +108,37 @@ if (isset($_POST['submit'])) {
                 <form action="tambah-barang.php" method="post" class="max-w-lg mt-8">
                     <fieldset class="w-full space-y-2 dark:text-gray-100">
                         <div class="flex">
-                            <div class="flex flex-wrap items-center px-3 pointer-events-none w-28 sm:text-sm rounded-l-md dark:bg-gray-700">
+                            <div class="flex flex-wrap items-center px-3 pointer-events-none w-44 sm:text-lg rounded-l-md dark:bg-gray-700">
                                 Kode Material</div>
-                            <input autofocus type="text" required name="material_code" id="url" placeholder="0001321301231" class="flex flex-1 p-3 border sm:text-sm rounded-r-md focus:ring-inset dark:border-gray-700 dark:text-gray-100 dark:bg-gray-800 focus:ring-violet-400">
+                            <input autofocus type="text" required name="material_code" id="url" placeholder="0001321301231" class="flex flex-1 p-3 border sm:text-lg rounded-r-md focus:ring-inset dark:border-gray-700 dark:text-gray-100 dark:bg-gray-800 focus:ring-violet-400">
                         </div>
 
                         <div class="flex">
-                            <div class="flex flex-wrap items-center px-3 pointer-events-none w-28 sm:text-sm rounded-l-md dark:bg-gray-700">
+                            <div class="flex flex-wrap items-center px-3 pointer-events-none w-44 sm:text-lg rounded-l-md dark:bg-gray-700">
                                 Material Description</div>
-                            <input type="text" required name="material_description" id="material_desc" placeholder="TRF DIS XXX 1999" class="flex flex-1 p-3 border sm:text-sm rounded-r-md focus:ring-inset dark:border-gray-700 dark:text-gray-100 dark:bg-gray-800 focus:ring-violet-400">
+                            <input type="text" required name="material_description" id="material_desc" placeholder="TRF DIS XXX 1999" class="flex flex-1 p-3 border sm:text-lg rounded-r-md focus:ring-inset dark:border-gray-700 dark:text-gray-100 dark:bg-gray-800 focus:ring-violet-400">
                         </div>
 
                         <div class="flex">
-                            <div class="flex flex-wrap items-center px-3 pointer-events-none w-28 sm:text-sm rounded-l-md dark:bg-gray-700">
+                            <div class="flex flex-wrap items-center px-3 pointer-events-none w-44 sm:text-lg rounded-l-md dark:bg-gray-700">
                                 Material Group</div>
-                            <input type="text" required name="material_group" id="url" placeholder="XM12312" class="flex flex-1 p-3 border sm:text-sm rounded-r-md focus:ring-inset dark:border-gray-700 dark:text-gray-100 dark:bg-gray-800 focus:ring-violet-400">
+                            <input type="text" required name="material_group" id="url" placeholder="XM12312" class="flex flex-1 p-3 border sm:text-lg rounded-r-md focus:ring-inset dark:border-gray-700 dark:text-gray-100 dark:bg-gray-800 focus:ring-violet-400">
                         </div>
                         <div class="flex">
-                            <div class="flex flex-wrap items-center px-3 pointer-events-none w-28 sm:text-sm rounded-l-md dark:bg-gray-700">
+                            <div class="flex flex-wrap items-center px-3 pointer-events-none w-44 sm:text-lg rounded-l-md dark:bg-gray-700">
                                 Base Unit of Measure</div>
-                            <input type="text" required name="base_unit_of_measure" id="url" placeholder="U" class="flex flex-1 p-3 border sm:text-sm rounded-r-md focus:ring-inset dark:border-gray-700 dark:text-gray-100 dark:bg-gray-800 focus:ring-violet-400">
+                            <input type="text" required name="base_unit_of_measure" id="url" placeholder="U" class="flex flex-1 p-3 border sm:text-lg rounded-r-md focus:ring-inset dark:border-gray-700 dark:text-gray-100 dark:bg-gray-800 focus:ring-violet-400">
                         </div>
 
                         <div class="flex">
-                            <div class="flex flex-wrap items-center px-3 pointer-events-none w-28 sm:text-sm rounded-l-md dark:bg-gray-700">
+                            <div class="flex flex-wrap items-center px-3 pointer-events-none w-44 sm:text-lg rounded-l-md dark:bg-gray-700">
                                 Valuation Type</div>
-                            <input type="text" required name="valuation_type" id="url" placeholder="Normal" class="flex flex-1 p-3 border sm:text-sm rounded-r-md focus:ring-inset dark:border-gray-700 dark:text-gray-100 dark:bg-gray-800 focus:ring-violet-400">
+                            <input type="text" required name="valuation_type" id="url" placeholder="Normal" class="flex flex-1 p-3 border sm:text-lg rounded-r-md focus:ring-inset dark:border-gray-700 dark:text-gray-100 dark:bg-gray-800 focus:ring-violet-400">
                         </div>
                         <div class="flex">
-                            <div class="flex flex-wrap items-center px-3 pointer-events-none w-28 sm:text-sm rounded-l-md dark:bg-gray-700">
+                            <div class="flex flex-wrap items-center px-3 pointer-events-none w-44 sm:text-lg rounded-l-md dark:bg-gray-700">
                                 Stock SAP</div>
-                            <input type="number" required name="stock_sap" id="url" placeholder="35" class="flex flex-1 p-3 border sm:text-sm rounded-r-md focus:ring-inset dark:border-gray-700 dark:text-gray-100 dark:bg-gray-800 focus:ring-violet-400">
+                            <input type="number" required name="stock_sap" id="url" placeholder="35" class="flex flex-1 p-3 border sm:text-lg rounded-r-md focus:ring-inset dark:border-gray-700 dark:text-gray-100 dark:bg-gray-800 focus:ring-violet-400">
                         </div>
                     </fieldset>
 
