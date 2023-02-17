@@ -49,11 +49,11 @@ $data = mysqli_fetch_array($query);
     <div class='flex'>
         <aside class="sticky top-0 h-screen p-3 space-y-2 w-60 dark:bg-gray-900 dark:text-gray-100">
             <div class="flex items-center p-2 space-x-4">
-                <img src="./logo.png" alt="" class="w-12 h-12 rounded-full dark:bg-gray-500">
+                <img src="./logo.png" alt="" class="w-8 h-8 rounded-full dark:bg-gray-500">
                 <div>
-                    <h2 class="text-lg font-semibold">Dashboard</h2>
+                    <h2 class="text-sm font-semibold">Dashboard</h2>
                     <span class="flex items-center space-x-1">
-                        <a rel="noopener noreferrer" href="#" class="text-lg hover:underline dark:text-gray-400">PLN
+                        <a rel="noopener noreferrer" href="#" class="text-xs hover:underline dark:text-gray-400">PLN
                             Inventory</a>
                     </span>
                 </div>
@@ -89,7 +89,7 @@ $data = mysqli_fetch_array($query);
             </div>
         </aside>
 
-        <main class="pt-6 bg-[#F7F8FC] w-full px-20">
+        <main class="pt-6 bg-[#F7F8FC] w-full px-3">
             <div class="flex justify-between">
                 <h1 class="text-2xl font-bold">Stok Barang</h1>
                 <img src="./search.png" class="w-5 h-5">

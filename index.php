@@ -35,11 +35,11 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
     <div class='flex'>
         <aside class="sticky top-0 h-screen p-3 space-y-2 w-60 dark:bg-gray-900 dark:text-gray-100">
             <div class="flex items-center p-2 space-x-4">
-                <img src="./logo.png" alt="" class="w-12 h-12 rounded-full dark:bg-gray-500">
+                <img src="./logo.png" alt="" class="w-8 h-8 rounded-full dark:bg-gray-500">
                 <div>
-                    <h2 class="text-lg font-semibold">Dashboard</h2>
+                    <h2 class="text-sm font-semibold">Dashboard</h2>
                     <span class="flex items-center space-x-1">
-                        <a rel="noopener noreferrer" href="#" class="text-lg hover:underline dark:text-gray-400">PLN
+                        <a rel="noopener noreferrer" href="#" class="text-xs hover:underline dark:text-gray-400">PLN
                             Inventory</a>
                     </span>
                 </div>
@@ -75,7 +75,7 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
             </div>
         </aside>
 
-        <main class="pt-6 bg-[#F7F8FC] w-full px-20">
+        <main class="pt-6 bg-[#F7F8FC] w-full px-3">
             <div class="flex justify-between">
                 <div class="flex items-center gap-2">
                     <h1 class="text-2xl font-bold">Stok Barang</h1>
@@ -148,7 +148,7 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
                                     <th class="p-3">Code</th>
                                     <th class="p-3">Description</th>
                                     <th class="p-3">Group</th>
-                                    <th class="p-3">Base Unit of Measure</th>
+                                    <th class="p-3">Base Unit</th>
                                     <th class="p-3">Valuation Type</th>
                                     <th class="p-3">Stok SAP</th>
                                     <th class="p-3 text-center">Action</th>

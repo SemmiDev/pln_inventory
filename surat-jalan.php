@@ -60,11 +60,11 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
     <div class='flex'>
         <aside class="sticky top-0 h-screen p-3 space-y-2 w-60 dark:bg-gray-900 dark:text-gray-100">
             <div class="flex items-center p-2 space-x-4">
-                <img src="./logo.png" alt="" class="w-12 h-12 rounded-full dark:bg-gray-500">
+                <img src="./logo.png" alt="" class="w-8 h-8 rounded-full dark:bg-gray-500">
                 <div>
-                    <h2 class="text-lg font-semibold">Dashboard</h2>
+                    <h2 class="text-sm font-semibold">Dashboard</h2>
                     <span class="flex items-center space-x-1">
-                        <a rel="noopener noreferrer" href="#" class="text-lg hover:underline dark:text-gray-400">PLN
+                        <a rel="noopener noreferrer" href="#" class="text-xs hover:underline dark:text-gray-400">PLN
                             Inventory</a>
                     </span>
                 </div>
@@ -100,7 +100,7 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
             </div>
         </aside>
 
-        <form action="cetak.php" method="get" class="pt-6 bg-[#F7F8FC] w-full px-20">
+        <form action="cetak.php" method="get" class="pt-6 bg-[#F7F8FC] w-full px-3">
             <div class="flex items-center justify-between">
                 <h1 class="text-2xl font-bold">Surat Jalan</h1>
 
@@ -121,7 +121,7 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
 
             <div class="flex gap-5 p-5 bg-white rounded-lg mt-11">
                 <div class="p-5 mt-2 bg-white rounded-lg">
-                    <div class="max-w-[400px]">
+                    <div class="max-w-xl">
                         <fieldset class="w-full space-y-2 dark:text-gray-100">
                             <div class="flex">
                                 <div class="flex flex-wrap items-center w-40 px-3 pointer-events-none sm:text-lg rounded-l-md dark:bg-gray-700">
@@ -250,14 +250,15 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
                         <div class="flex justify-end">
                             <button onclick="addMaterial()" type="button" id="tambah-material" class="px-8 py-3 mt-5 font-semibold text-white transition duration-300 bg-black border rounded-lg w-44 hover:text-black hover:bg-white hover:border-black">Tambah</button>
                         </div>
+
+                        <div class="flex flex-col p-5 mt-2 bg-white rounded-lg gap-y-2" id="added-items">
+                            <div id="countTotalKeluar">
+
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="flex flex-col p-5 mt-2 bg-white rounded-lg gap-y-2" id="added-items">
-                    <div id="countTotalKeluar">
-
-                    </div>
-                </div>
             </div>
         </form>
     </div>
