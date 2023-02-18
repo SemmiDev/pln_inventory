@@ -6,9 +6,11 @@ $input = $_GET['input'];
 $input = json_decode($input);
 $barangKeluar = $input->barang_keluar;
 
+$totalKeluar = 0;
 foreach ($barangKeluar as $barang) {
     $materialDesc = $barang->material_description;
     $jumlahKeluar = $barang->jumlah_keluar;
+    $totalKeluar += $jumlahKeluar;
 
     $sql = "UPDATE material SET stock_sap = stock_sap - $jumlahKeluar WHERE material_description = '$materialDesc'";
     $result = mysqli_query($db, $sql);
@@ -36,7 +38,7 @@ $sql = "INSERT INTO transactions(
         '$format',
         '$data->material_description',
         0,
-        '$jumlahKeluar',
+        '$totalKeluar',
         '$input->keterangan',
         '$data->stock_sap'
     )";
