@@ -16,7 +16,7 @@ CREATE TABLE material (
 CREATE TABLE transactions (
     transaction_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     material_id INT NOT NULL,
-    created_at DATE NOT NULL,
+    created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     material_description VARCHAR(50) NOT NULL,
     terima INT DEFAULT 0,
     keluar INT DEFAULT 0,

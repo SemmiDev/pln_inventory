@@ -27,7 +27,7 @@ if (isset($_POST['submit'])) {
         jumlah_saldo
     ) VALUES (
         '$material_id',
-        NOW(),
+        CURRENT_TIMESTAMP(),
         '$data->material_description',
         '$barang_masuk',
         0,

@@ -17,7 +17,13 @@ foreach ($barangKeluar as $barang) {
     $result = mysqli_query($db, $sql);
     $data = mysqli_fetch_object($result);
 
-    $sql = "INSERT INTO transactions(
+    date_default_timezone_set('Asia/Jakarta');
+    $createdAt = $input->created_at;  // 2023-03-10
+    $currenHourMinute = date('H:i:s'); //  00:00:00
+    $format = $createdAt . ' ' . $currenHourMinute;  // 2023-03-10 00:00:00
+}
+
+$sql = "INSERT INTO transactions(
         material_id,
         created_at,
         material_description,
@@ -27,7 +33,7 @@ foreach ($barangKeluar as $barang) {
         jumlah_saldo
     ) VALUES (
         '$data->material_id',
-        '$input->created_at',
+        '$format',
         '$data->material_description',
         0,
         '$jumlahKeluar',
@@ -35,19 +41,26 @@ foreach ($barangKeluar as $barang) {
         '$data->stock_sap'
     )";
 
-    $result = mysqli_query($db, $sql);
-}
-
+$result = mysqli_query($db, $sql);
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
+
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Done</title>
+
 </head>
+
+
 
 <body>
     <script>
@@ -56,5 +69,7 @@ foreach ($barangKeluar as $barang) {
         window.location.href = "index.php";
     </script>
 </body>
+
+
 
 </html>
