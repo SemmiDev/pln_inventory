@@ -134,11 +134,11 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
                     <button type="button" class="px-8 py-3 mt-5 font-semibold text-white transition duration-300 bg-black border rounded-lg hover:text-black hover:bg-white hover:border-black">Tambah</button>
                 </a>
 
-                <button id="print" onclick="printPage()" type="button" class="px-8 py-3 mt-5 font-semibold text-white transition duration-300 bg-sky-500 border rounded-lg hover:text-black hover:bg-white hover:border-black">Print</button>
+                <a href="printIndex.php" class="px-8 py-3 mt-5 font-semibold text-white transition duration-300 bg-sky-500 border rounded-lg hover:text-black hover:bg-white hover:border-black">Print</a>
 
                 <div class="container p-2 mx-auto sm:p-4 dark:text-gray-100">
                     <div class="overflow-x-auto">
-                        <table class="min-w-full text-lg">
+                        <table class="min-w-full text-lg" border="1">
                             <colgroup>
                                 <col>
                                 <col>
@@ -146,7 +146,7 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
                                 <col>
                                 <col>
                                 <col>
-                                <col class="w-24">
+                                <col class="w-24" id="actionColumn">
                             </colgroup>
                             <thead class="dark:bg-gray-700">
                                 <tr class="text-left">
@@ -156,7 +156,7 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
                                     <th class="p-3">Base Unit</th>
                                     <th class="p-3">Valuation Type</th>
                                     <th class="p-3">Stok SAP</th>
-                                    <th id="actionColumn" class="p-3 text-center">Action</th>
+                                    <th id="columAct" class="p-3 text-center">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -181,7 +181,7 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
                                     <td class='p-3'>
                                         <p>$d[stock_sap]</p>
                                     </td>
-                                    <td class='flex items-center justify-center gap-1 p-3' id='action'>
+                                    <td class='flex items-center justify-center gap-1 p-3 accc'>
                                         <a href='tambah-stock-barang.php?id=$d[material_id]'>
                                             <button type='button'
                                                 class='px-4 py-3 font-semibold text-white transition duration-200 ease-linear bg-green-400 border-2 border-green-400 rounded-lg hover:bg-green-600'>Tambah</button>
@@ -221,12 +221,16 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
         function printPage() {
             document.getElementById("sidebar").style.display = "none";
             document.getElementById("search").style.display = "none";
-            document.getElementById("action").style.display = "none";
             document.getElementById("tambah").style.display = "none";
             document.getElementById("print").style.display = "none";
             document.getElementById("actionColumn").style.display = "none";
+            document.getElementById("columAct").style.display = "none";
             document.getElementById("urutkan").style.display = "none";
             document.getElementById("hehe2").style.display = "none";
+            document.querySelectorAll("accc").forEach((e) => {
+                e.style.display = "none";
+            });
+
 
             // get element id = hehe
             // and add div with text "location code"
@@ -239,6 +243,10 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
             div2.innerHTML = "Location Name : ";
             hehe.appendChild(div1);
             hehe.appendChild(div2);
+
+            document.querySelectorAll("*").forEach((e) => {
+                e.style.fontSize = "8px";
+            });
 
             // add config for remote header and footer
             var config = {
