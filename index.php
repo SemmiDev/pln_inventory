@@ -108,7 +108,7 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
 
             <div class="p-5 bg-white rounded-lg mt-11">
                 <div class="flex items-center justify-between">
-                    <div class="flex items-center gap-5">
+                    <div class="flex items-center gap-5" id="hehe2">
                         <h1 class="text-2xl font-bold">Stok Barang</h1>
                         <?php
                         if (isset($_GET['status'])) {
@@ -116,6 +116,9 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
                             echo "<span class='text-lg font-semibold text-sky-600'>$status</span>";
                         }
                         ?>
+                    </div>
+                    <div id="hehe">
+
                     </div>
                     <div class="flex gap-5">
                         <a id="urutkan" href="index.php?sort=<?php echo $sorting == 'ASC' ? 'DESC' : 'ASC' ?>">
@@ -223,7 +226,19 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
             document.getElementById("print").style.display = "none";
             document.getElementById("actionColumn").style.display = "none";
             document.getElementById("urutkan").style.display = "none";
+            document.getElementById("hehe2").style.display = "none";
 
+            // get element id = hehe
+            // and add div with text "location code"
+            // and add div with text "location name"
+
+            let hehe = document.getElementById("hehe");
+            let div1 = document.createElement("div");
+            let div2 = document.createElement("div");
+            div1.innerHTML = "Location Code : ";
+            div2.innerHTML = "Location Name : ";
+            hehe.appendChild(div1);
+            hehe.appendChild(div2);
 
             // add config for remote header and footer
             var config = {
@@ -237,6 +252,9 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
 
             // print the page
             window.print();
+
+            // after that redirect to index.php
+            window.location.href = "index.php";
         }
     </script>
 </body>
