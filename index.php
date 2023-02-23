@@ -33,7 +33,7 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
 
 <body>
     <div class='flex'>
-        <aside class="sticky top-0 h-screen p-3 space-y-2 w-60 dark:bg-gray-900 dark:text-gray-100">
+        <aside id="sidebar" class="sticky top-0 h-screen p-3 space-y-2 w-60 dark:bg-gray-900 dark:text-gray-100">
             <div class="flex items-center p-2 space-x-4">
                 <img src="./logo.png" alt="" class="w-8 h-8 rounded-full dark:bg-gray-500">
                 <div>
@@ -78,7 +78,7 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
         <main class="pt-6 bg-[#F7F8FC] w-full px-3">
             <div class="flex justify-between">
                 <div class="flex items-center gap-2">
-                    <h1 class="text-2xl font-bold">Stok Barang</h1>
+                    <!-- <h1 class="text-2xl font-bold">Stok Barang</h1> -->
                     <?php
                     if (isset($_GET['search'])) {
                         $keyword = $_GET['search'];
@@ -87,8 +87,8 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
                     }
                     ?>
                 </div>
-                <form action="index.php">
-                    <fieldset class="w-full space-y-1 dark:text-gray-100">
+                <form action="index.php" id="search">
+                    <fieldset class="w-full space-y-1 dark:text-gray-100 flex gap-2 items-center">
                         <label for="Search" class="hidden">Search</label>
                         <div class="relative">
                             <span class="absolute inset-y-0 left-0 flex items-center pl-2">
@@ -106,7 +106,6 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
                 </form>
             </div>
 
-
             <div class="p-5 bg-white rounded-lg mt-11">
                 <div class="flex items-center justify-between">
                     <div class="flex items-center gap-5">
@@ -119,7 +118,7 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
                         ?>
                     </div>
                     <div class="flex gap-5">
-                        <a href="index.php?sort=<?php echo $sorting == 'ASC' ? 'DESC' : 'ASC' ?>">
+                        <a id="urutkan" href="index.php?sort=<?php echo $sorting == 'ASC' ? 'DESC' : 'ASC' ?>">
                             <div class="flex items-center gap-2 ">
                                 <img src="./sort.png" alt="">
                                 <span class="text-lg">Urutkan</span>
@@ -127,9 +126,12 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
                         </a>
                     </div>
                 </div>
-                <a href="tambah-barang.php">
+
+                <a href="tambah-barang.php" id="tambah">
                     <button type="button" class="px-8 py-3 mt-5 font-semibold text-white transition duration-300 bg-black border rounded-lg hover:text-black hover:bg-white hover:border-black">Tambah</button>
                 </a>
+
+                <button id="print" onclick="printPage()" type="button" class="px-8 py-3 mt-5 font-semibold text-white transition duration-300 bg-sky-500 border rounded-lg hover:text-black hover:bg-white hover:border-black">Print</button>
 
                 <div class="container p-2 mx-auto sm:p-4 dark:text-gray-100">
                     <div class="overflow-x-auto">
@@ -151,7 +153,7 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
                                     <th class="p-3">Base Unit</th>
                                     <th class="p-3">Valuation Type</th>
                                     <th class="p-3">Stok SAP</th>
-                                    <th class="p-3 text-center">Action</th>
+                                    <th id="actionColumn" class="p-3 text-center">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -176,7 +178,7 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
                                     <td class='p-3'>
                                         <p>$d[stock_sap]</p>
                                     </td>
-                                    <td class='flex items-center justify-center gap-1 p-3'>
+                                    <td class='flex items-center justify-center gap-1 p-3' id='action'>
                                         <a href='tambah-stock-barang.php?id=$d[material_id]'>
                                             <button type='button'
                                                 class='px-4 py-3 font-semibold text-white transition duration-200 ease-linear bg-green-400 border-2 border-green-400 rounded-lg hover:bg-green-600'>Tambah</button>
@@ -209,6 +211,34 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
             }
         </script>
     </div>
+    <script>
+        // when rendering is done
+        // print the page without headers and footers
+
+        function printPage() {
+            document.getElementById("sidebar").style.display = "none";
+            document.getElementById("search").style.display = "none";
+            document.getElementById("action").style.display = "none";
+            document.getElementById("tambah").style.display = "none";
+            document.getElementById("print").style.display = "none";
+            document.getElementById("actionColumn").style.display = "none";
+            document.getElementById("urutkan").style.display = "none";
+
+
+            // add config for remote header and footer
+            var config = {
+                header: {
+                    height: "0mm",
+                },
+                footer: {
+                    height: "0mm",
+                },
+            };
+
+            // print the page
+            window.print();
+        }
+    </script>
 </body>
 
 </html>

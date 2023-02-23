@@ -35,7 +35,7 @@ if (isset($_GET['search'])) {
 
 <body>
     <div class='flex'>
-        <aside class="sticky top-0 h-screen p-3 space-y-2 w-60 dark:bg-gray-900 dark:text-gray-100">
+        <aside class="sticky top-0 h-screen p-3 space-y-2 w-60 dark:bg-gray-900 dark:text-gray-100" id="sidebar">
             <div class="flex items-center p-2 space-x-4">
                 <img src="./logo.png" alt="" class="w-8 h-8 rounded-full dark:bg-gray-500">
                 <div>
@@ -82,8 +82,7 @@ if (isset($_GET['search'])) {
                 <div class="flex items-center gap-2">
                     <h1 class="text-2xl font-bold">Stok Barang</h1>
                 </div>
-
-                <form action="barang-keluar.php">
+                <form action="barang-keluar.php" id="search">
                     <fieldset class="w-full space-y-1 dark:text-gray-100">
                         <label for="Search" class="hidden">Search</label>
                         <div class="relative">
@@ -104,7 +103,7 @@ if (isset($_GET['search'])) {
 
 
             <div class="p-5 bg-white rounded-lg mt-11">
-                <div class="flex justify-end gap-5 font-bold">
+                <div class="flex justify-end gap-5 font-bold" id="tanggal">
                     <a href="barang-keluar.php?sort=<?php echo $sorting == 'ASC' ? 'DESC' : 'ASC' ?>">
                         <div class="flex items-center gap-2 ">
                             <img src="./sort.png" alt="">
@@ -113,9 +112,13 @@ if (isset($_GET['search'])) {
                     </a>
                 </div>
 
-
                 <div class="container p-2 mx-auto sm:p-4 dark:text-gray-100">
                     <div class="overflow-x-auto">
+
+                        <button class="bg-green-500 text-white rounded-lg px-3 py-2" id="print" onclick="printPage()">
+                            Print
+                        </button>
+
                         <table class="min-w-full text-lg">
                             <colgroup>
                                 <col>
@@ -183,6 +186,33 @@ if (isset($_GET['search'])) {
     </div>
     </main>
     </div>
+
+    <script>
+        // when rendering is done
+        // print the page without headers and footers
+
+        function printPage() {
+
+            document.getElementById("sidebar").style.display = "none";
+            document.getElementById("search").style.display = "none";
+            document.getElementById("tanggal").style.display = "none";
+            document.getElementById("print").style.display = "none";
+
+
+            // add config for remote header and footer
+            var config = {
+                header: {
+                    height: "0mm",
+                },
+                footer: {
+                    height: "0mm",
+                },
+            };
+
+            // print the page
+            window.print();
+        }
+    </script>
 </body>
 
 </html>
