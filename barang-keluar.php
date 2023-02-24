@@ -198,6 +198,10 @@ if (isset($_GET['search'])) {
             document.getElementById("tanggal").style.display = "none";
             document.getElementById("print").style.display = "none";
 
+            var all = document.getElementsByTagName("*");
+            for (var i = 0, max = all.length; i < max; i++) {
+                all[i].style.fontSize = "8px";
+            }
 
             // add config for remote header and footer
             var config = {
