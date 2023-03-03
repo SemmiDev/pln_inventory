@@ -2,6 +2,8 @@
 
 include 'koneksi.php';
 
+$dateToPrint = $_GET['dateToPrint'] ?? '';
+
 $sql = "SELECT * FROM transactions ORDER BY transaction_id DESC";
 $query = mysqli_query($db, $sql);
 $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
@@ -20,6 +22,16 @@ if (isset($_GET['search'])) {
     $sql = "SELECT * FROM transactions WHERE material_description LIKE '%$search%' ORDER BY created_at DESC";
     $query = mysqli_query($db, $sql);
     $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
+}
+
+if ($dateToPrint != '') {
+    // change format 2023-03-24 09:15:36 to 2023-03
+    // and filter from previous result $data
+
+    $dateToPrint = substr($dateToPrint, 0, 7);
+    $data = array_filter($data, function ($item) use ($dateToPrint) {
+        return substr($item['created_at'], 0, 7) == $dateToPrint;
+    });
 }
 ?>
 
@@ -115,9 +127,18 @@ if (isset($_GET['search'])) {
                 <div class="container p-2 mx-auto sm:p-4 dark:text-gray-100">
                     <div class="overflow-x-auto">
 
-                        <button class="bg-green-500 text-white rounded-lg px-3 py-2" id="print" onclick="printPage()">
-                            Print
-                        </button>
+                        <div class="flex gap-x-2 items-center mb-5">
+                            <form action="barang-keluar.php" method="get">
+                                <input type="text" name="dateToPrint" required class="border px-3 text-black py-2" placeholder="2023-03">
+                                <button type="submit" class="bg-green-500 text-white rounded-lg px-3 py-2">
+                                    Ambil Data per Bulan
+                                </button>
+                            </form>
+
+                            <button class="bg-green-500 text-white rounded-lg px-3 py-2" id="print" onclick="printPage()">
+                                Print
+                            </button>
+                        </div>
 
                         <table class="min-w-full text-lg">
                             <colgroup>
