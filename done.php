@@ -23,9 +23,9 @@ foreach ($barangKeluar as $barang) {
     $createdAt = $input->created_at;  // 2023-03-10
     $currenHourMinute = date('H:i:s'); //  00:00:00
     $format = $createdAt . ' ' . $currenHourMinute;  // 2023-03-10 00:00:00
-}
 
-$sql = "INSERT INTO transactions(
+    // insert into transactions
+    $sql = "INSERT INTO transactions(
         material_id,
         created_at,
         material_description,
@@ -38,12 +38,13 @@ $sql = "INSERT INTO transactions(
         '$format',
         '$data->material_description',
         0,
-        '$totalKeluar',
+        '$jumlahKeluar',
         '$input->keterangan',
         '$data->stock_sap'
     )";
 
-$result = mysqli_query($db, $sql);
+    $result = mysqli_query($db, $sql);
+}
 ?>
 
 <!DOCTYPE html>
